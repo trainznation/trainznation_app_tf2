@@ -1,0 +1,74 @@
+{
+  "name": "trainznation_app_tf2",
+  "version": "0.0.1",
+  "productName": "Trainznation Mod Launcher",
+  "description": "Launcher et téléchargement de mod Transport Fever 2 par Trainznation Studio",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --debug",
+    "watch": "npm run development -- --watch",
+    "dist": "cross-env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true node build.js",
+    "lint": "eslint --config .eslintrc.json .",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trainznation/trainznation_app_tf2.git"
+  },
+  "keywords": [
+    "trainznation",
+    "mod",
+    "transport",
+    "fever",
+    "2",
+    "transport",
+    "gestion",
+    "launcher",
+    "download"
+  ],
+  "author": "Trainznation Studio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trainznation/trainznation_app_tf2/issues"
+  },
+  "homepage": "https://github.com/trainznation/trainznation_app_tf2#readme",
+  "engines": {
+    "node": "14.x.x"
+  },
+  "dependencies": {
+    "@electron/remote": "^1.0.4",
+    "adm-zip": "^0.5.3",
+    "async": "^3.2.0",
+    "discord-rpc": "^3.2.0",
+    "ejs": "^3.1.6",
+    "ejs-electron": "^2.1.1",
+    "electron-db": "^0.15.7",
+    "electron-log": "^4.3.2",
+    "electron-updater": "^4.3.8",
+    "electron-util": "^0.14.2",
+    "fs-extra": "^9.1.0",
+    "github-syntax-dark": "^0.5.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2",
+    "semver": "^7.3.4",
+    "systeminformation": "^5.6.7",
+    "tar-fs": "^2.1.1",
+    "winreg": "^1.2.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^12.0.0",
+    "electron-builder": "^22.10.5",
+    "eslint": "^7.21.0",
+    "laravel-mix": "^6.0.13",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.2.8",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.26.2"
+  }
+}

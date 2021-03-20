@@ -1,0 +1,36 @@
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 160px;
+  padding: 5px 10px;
+  margin: -1px 0 0 0;
+  list-style: none;
+  background: rgb(51,51,51);
+  background: linear-gradient(180deg, rgba(51,51,51,1) 0%, rgba(11,34,46,1) 100%);
+  border: 1px solid #7f8fa0;
+  border-radius: 3px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+  top: 30px;
+
+  > li {
+    margin: 5px 0;
+    color: #7f8fa0;
+
+    > hr {
+      width: 100%;
+      border: solid 1px #7f7f7f;
+    }
+  }
+}
+
+.notifications {
+  min-width: 290px;
+  right: 45px;
+  top: 45px;
+
+  > li {
+    font-size: 12px;
+  }
+}

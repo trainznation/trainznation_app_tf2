@@ -1,0 +1,30 @@
+$blue-color: rgb(0, 60, 125);
+$blue-color-light: lighten($blue-color, 30%);
+$blue-color-dark: darken($blue-color, 30%);
+$path_img: "file:///assets/images";
+
+$red-color: #f44336;
+$pink-color: #E91E63;
+$purple-color: #9C27B0;
+$deep-purple-color: #673AB7;
+$indigo: #3F51B5;
+$blue: #2196F3;
+$light-blue: #03A9F4;
+$cyan: #00BCD4;
+$teal: #009688;
+$green: #4CAF50;
+$light-green: #8BC34A;
+$lime: #CDDC39;
+$yellow: #FFEB3B;
+$amber: #FFC107;
+$orange: #FF9800;
+$deep-orange: #FF5722;
+$brown: #795548;
+$grey: #9E9E9E;
+$blue-grey: #607D8B;
+
+$primary: $blue;
+$secondary: $grey;
+$success: $green;
+$warning: $orange;
+$error: $red-color;

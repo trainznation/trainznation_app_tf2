@@ -1,0 +1,88 @@
+#overlayContainer {
+  position: absolute;
+  z-index: 500;
+  top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 22px);
+  background: rgba(0,0,0,.5);
+  
+  > #overlayContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+
+    > #overlayTitle {
+      font-family: 'Bitstream Vera Sans', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      -webkit-user-select: initial;
+    }
+
+    > #overlayDesc {
+      font-size: 12px;
+      font-weight: bold;
+      -webkit-user-select: initial;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    > #overlayActionContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      > #overlayAcknowledge {
+        background: none;
+        border: 1px solid #fff;
+        color: white;
+        font-family: "Bitstream Vera Sans", sans-serif;
+        font-weight: bold;
+        border-radius: 2px;
+        padding: 0 8.1px;
+        cursor: pointer;
+        transition: 0.25s ease;
+
+        &:hover {
+          box-shadow: 0px 0px 10px 0px #fff;
+          outline: none;
+        }
+        &:focus {
+          box-shadow: 0px 0px 10px 0px #fff;
+          outline: none;
+        }
+        &:active {
+          border-color: rgba(255, 255, 255, 0.75);
+          color: rgba(255, 255, 255, 0.75);
+        }
+      }
+
+      > #overlayDismiss {
+        font-weight: bold;
+        font-size: 10px;
+        text-decoration: none;
+        padding-top: 2.5px;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.75);
+        }
+
+        &:active {
+          color: rgba(165, 165, 165, 0.75);
+        }
+      }
+    }
+  }
+}
