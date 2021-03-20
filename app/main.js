@@ -13,11 +13,13 @@ const pjson = require('../package.json')
 const fetch = require('node-fetch')
 const db = require('electron-db')
 const log = require('electron-log')
+const {is, isFirstAppLaunch} = require('electron-util')
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const location = path.join(__dirname, 'data', 'database')
+const location = path.join(app.getPath('userData'), 'data', 'database')
 const openLinksInExternal = true
+console.log(location)
 
 const debug = /--debug/.test(process.argv[2])
 const args = process.argv.slice(2)
@@ -47,14 +49,6 @@ app.allowRendererProcessReuse = true;
 
 Object.assign(console, log.functions)
 log.catchErrors()
-
-if (openDev) {
-    log.transports.file.level = "debug";
-    endpoint = 'https://tf2.trainznation.io/api/';
-} else {
-    log.transports.file.level = "info";
-    endpoint = 'https://tf2.trainznation.tk/api/';
-}
 
 if (process.mas) app.setName(pjson.productName);
 autoUpdater.logger = log;
@@ -102,29 +96,72 @@ function startUpdateCheckIfNotStarted() {
     log.debug("La verification des mises a jour est probablement en cours !");
 }
 
+function createDirectory() {
+    if(!fs.existsSync(app.getPath('userData')+'/data')) {
+        fs.mkdirSync(app.getPath('userData')+'/data/')
+        fs.mkdirSync(app.getPath('userData')+'/data/database/')
+        updateJsonFileMod()
+    } else {
+        updateJsonFileMod()
+    }
+}
+
 function updateJsonFileMod() {
-    fetch("https://download.trainznation.tk/tf2/mod.json")
-        .then(res => res.json())
-        .then(json => {
-            fs.writeFile(path.join(__dirname, "data", "mod.json"), JSON.stringify(json), (err) => {
-                if (err) {
-                    log.error("Erreur: " + err);
-                    app.quit();
-                } else {
-                    initUserTable()
-                    log.debug("Fichier des mods mise a jour !");
-                }
+    if(fs.existsSync(app.getPath('userData')+'/data/mod.json') === true) {
+        fetch("https://download.trainznation.tk/tf2/mod.json")
+            .then(res => res.json())
+            .then(json => {
+                fs.writeFile(path.join(app.getPath('userData'), "data", "mod.json"), JSON.stringify(json), (err) => {
+                    if (err) {
+                        log.error("Erreur: " + err);
+                        app.quit();
+                    } else {
+                        createConfigurationFile()
+                        log.debug("Fichier des mods mise a jour !");
+                    }
+                })
+            }).catch(err => {
+            log.error("Impossible de se connecter au serveur de mise à jours");
+            log.error(err);
+            app.quit();
+        })
+    } else {
+        fs.writeFile(app.getPath('userData')+'/data/mod.json', '{}', (err) => {
+            if(err) throw err;
+
+            fetch("https://download.trainznation.tk/tf2/mod.json")
+                .then(res => res.json())
+                .then(json => {
+                    fs.writeFile(path.join(app.getPath('userData'), "data", "mod.json"), JSON.stringify(json), (err) => {
+                        if (err) {
+                            log.error("Erreur: " + err);
+                            app.quit();
+                        } else {
+                            createConfigurationFile()
+                            log.debug("Fichier des mods mise a jour !");
+                        }
+                    })
+                }).catch(err => {
+                log.error("Impossible de se connecter au serveur de mise à jours");
+                log.error(err);
+                app.quit();
             })
-        }).catch(err => {
-        log.error("Impossible de se connecter au serveur de mise à jours");
-        log.error(err);
-        app.quit();
-    })
+
+        })
+    }
+}
+
+if (openDev) {
+    log.transports.file.level = "debug";
+    endpoint = 'https://tf2.trainznation.io/api/';
+} else {
+    log.transports.file.level = "info";
+    endpoint = 'https://tf2.trainznation.io/api/';
 }
 
 function createConfigurationFile() {
-    if (fs.existsSync(path.join(__dirname, "data", "database", "configuration.json"))) {
-        return null;
+    if (fs.existsSync(app.getPath('userData')+'data/database/configuration.json') === true) {
+        initUserTable()
     } else {
         db.createTable('configuration', location, (succ, msg) => {
             if (!succ) {
@@ -143,6 +180,7 @@ function createConfigurationFile() {
                             log.error("Erreur lors du remplissage de la table 'configuration'");
                             log.error("Erreur: " + msg);
                         } else {
+                            initUserTable()
                             log.info("Initialisation de la configuration: OK");
                         }
                     })
@@ -155,7 +193,7 @@ function createConfigurationFile() {
 }
 
 function initUserTable() {
-    if (fs.existsSync(path.join(__dirname, "data", "database", "user.json"))) {
+    if (fs.existsSync(path.join(app.getPath('userData'), "data", "database", "user.json"))) {
         // Si le fichier existe lancement de la mise à jours de la table
         updateUserModTable();
     } else {
@@ -174,7 +212,7 @@ function initUserTable() {
 }
 
 function initUserModTable() {
-    let modJson = require('./data/mod.json');
+    let modJson = require(path.join(app.getPath('userData'), "data", "mod.json"));
     modJson.files.forEach((mod) => {
         db.insertTableContent('user', location, {
             modid: mod.entryurl,
@@ -208,7 +246,7 @@ function initUserModTable() {
 }
 
 function updateUserModTable() {
-    let modJSon = require("./data/mod.json");
+    let modJSon = require(path.join(app.getPath('userData'), "data", "mod.json"));
     modJSon.files.forEach((mod) => {
         db.getRows('user', location, {modid: mod.entryurl}, (succ, row) => {
             if(succ) {
@@ -324,8 +362,7 @@ function createWindow() {
 
     log.info("Démarrage du programme de téléchargement de mod pour TF2 version: "+pjson.version+" os: "+os.platform()+" arch: "+ os.arch());
     setTimeout(startUpdateCheckIfNotStarted, 800);
-    updateJsonFileMod()
-    createConfigurationFile()
+    createDirectory()
 }
 
 function getPlatformIcon(logo) {

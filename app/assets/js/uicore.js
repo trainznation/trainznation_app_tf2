@@ -2,12 +2,13 @@ const $ = require('jquery');
 const {is, isFirstAppLaunch} = require('electron-util')
 const {ipcRenderer} = require('electron');
 const remote = require('electron').remote;
+const app = require('electron').remote.app
 const log = require("electron-log");
 const os = require('os')
 const path = require('path');
 const moment = require('moment');
 const pjson = require(path.resolve('package.json'));
-let config = require(path.resolve('app/data/database/configuration.json'));
+let config = require(app.getPath('userData')+'/data/database/configuration.json');
 console.log(config)
 
 
