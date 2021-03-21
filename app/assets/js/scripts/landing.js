@@ -1,5 +1,5 @@
 function listNews() {
-    fetch(config.configuration[0].endpoint+'blog/post')
+    fetch(config.configuration[0].endpoint+'/blog/post')
         .then(res => res.json())
         .then(json => {
             let content = document.querySelector('#listeNews')

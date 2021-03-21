@@ -9,6 +9,8 @@
     "dev": "electron . --debug",
     "watch": "npm run development -- --watch",
     "dist": "cross-env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true node build.js",
+    "build": "electron-builder build",
+    "publish": "electron-builder build -p always",
     "lint": "eslint --config .eslintrc.json .",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
@@ -51,6 +53,7 @@
     "github-syntax-dark": "^0.5.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
+    "new-github-issue-url": "^0.2.1",
     "node-fetch": "^2.6.1",
     "request": "^2.88.2",
     "semver": "^7.3.4",

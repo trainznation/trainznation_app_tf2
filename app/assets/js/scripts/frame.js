@@ -18,7 +18,7 @@ button.btnClose.addEventListener('click', () => {
 })
 
 function fetchingAnnounce() {
-    fetch(config.configuration[0].endpoint+'setting/announcement')
+    fetch(config.configuration[0].endpoint+'/setting/announcement')
         .then(res => res.json())
         .then(json => {
             console.log(json)

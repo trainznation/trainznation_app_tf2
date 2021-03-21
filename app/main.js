@@ -92,64 +92,15 @@ function startUpdateCheckIfNotStarted() {
         return;
 
     log.debug("Demarrage de la verification de mise a jours...");
-    autoUpdater.checkForUpdatesAndNotify();
+    if(openDev) {
+        autoUpdater.checkForUpdatesAndNotify();
+    } else {
+        autoUpdater.checkForUpdates()
+    }
     log.debug("La verification des mises a jour est probablement en cours !");
 }
 
-function createDirectory() {
-    if(!fs.existsSync(app.getPath('userData')+'/data')) {
-        fs.mkdirSync(app.getPath('userData')+'/data/')
-        fs.mkdirSync(app.getPath('userData')+'/data/database/')
-        updateJsonFileMod()
-    } else {
-        updateJsonFileMod()
-    }
-}
 
-function updateJsonFileMod() {
-    if(fs.existsSync(app.getPath('userData')+'/data/mod.json') === true) {
-        fetch("https://download.trainznation.tk/tf2/mod.json")
-            .then(res => res.json())
-            .then(json => {
-                fs.writeFile(path.join(app.getPath('userData'), "data", "mod.json"), JSON.stringify(json), (err) => {
-                    if (err) {
-                        log.error("Erreur: " + err);
-                        app.quit();
-                    } else {
-                        createConfigurationFile()
-                        log.debug("Fichier des mods mise a jour !");
-                    }
-                })
-            }).catch(err => {
-            log.error("Impossible de se connecter au serveur de mise à jours");
-            log.error(err);
-            app.quit();
-        })
-    } else {
-        fs.writeFile(app.getPath('userData')+'/data/mod.json', '{}', (err) => {
-            if(err) throw err;
-
-            fetch("https://download.trainznation.tk/tf2/mod.json")
-                .then(res => res.json())
-                .then(json => {
-                    fs.writeFile(path.join(app.getPath('userData'), "data", "mod.json"), JSON.stringify(json), (err) => {
-                        if (err) {
-                            log.error("Erreur: " + err);
-                            app.quit();
-                        } else {
-                            createConfigurationFile()
-                            log.debug("Fichier des mods mise a jour !");
-                        }
-                    })
-                }).catch(err => {
-                log.error("Impossible de se connecter au serveur de mise à jours");
-                log.error(err);
-                app.quit();
-            })
-
-        })
-    }
-}
 
 if (openDev) {
     log.transports.file.level = "debug";
@@ -159,128 +110,6 @@ if (openDev) {
     endpoint = 'https://tf2.trainznation.io/api/';
 }
 
-function createConfigurationFile() {
-    if (fs.existsSync(app.getPath('userData')+'data/database/configuration.json') === true) {
-        initUserTable()
-    } else {
-        db.createTable('configuration', location, (succ, msg) => {
-            if (!succ) {
-                log.error("Erreur lors de la création de la table 'configuration'");
-                log.error("Erreur : " + msg);
-            } else {
-                let obj = {};
-                obj.path_tf2 = null;
-                obj.path_tf2_mod = null;
-                obj.launcher_auto_update = true;
-                obj.endpoint = endpoint;
-
-                if (db.valid('configuration', location)) {
-                    db.insertTableContent('configuration', location, obj, (succ, msg) => {
-                        if (!succ) {
-                            log.error("Erreur lors du remplissage de la table 'configuration'");
-                            log.error("Erreur: " + msg);
-                        } else {
-                            initUserTable()
-                            log.info("Initialisation de la configuration: OK");
-                        }
-                    })
-                } else {
-                    log.error("Erreur: La Table 'configuration' n'existe pas");
-                }
-            }
-        })
-    }
-}
-
-function initUserTable() {
-    if (fs.existsSync(path.join(app.getPath('userData'), "data", "database", "user.json"))) {
-        // Si le fichier existe lancement de la mise à jours de la table
-        updateUserModTable();
-    } else {
-        // sinon ont créer le fichier
-        db.createTable('user', location, (succ, msg) => {
-            if(succ) {
-                initUserModTable();
-            } else {
-                log.error("Erreur lors de la création de la table 'User'");
-                log.error("Erreur: "+msg);
-                app.quit();
-            }
-        })
-    }
-
-}
-
-function initUserModTable() {
-    let modJson = require(path.join(app.getPath('userData'), "data", "mod.json"));
-    modJson.files.forEach((mod) => {
-        db.insertTableContent('user', location, {
-            modid: mod.entryurl,
-            name: mod.name,
-            category: mod.category,
-            subcategory: mod.subcategory,
-            version_server: mod.version,
-            mod_state: mod.state,
-            mod_time: mod.utc_changed,
-            mod_file: "https://download.trainznation.tk/tf2/mod/packages/"+mod.download,
-            mod_file_size: mod.download_size,
-            mod_img: mod.imgFile,
-            description: mod.description,
-            changelogs: mod.changelog,
-            install: {
-                installed: "not_installed",
-                installed_time: null,
-                installed_version: null
-            }
-
-        }, (succ, msg) => {
-            if(succ) {
-                log.info("Initialisation du contenue du fichier 'user': Terminer")
-            } else {
-                log.error("Erreur lors de l'initialisation du contenue du fichier 'User'");
-                log.error("Erreur: "+msg);
-                app.quit();
-            }
-        })
-    })
-}
-
-function updateUserModTable() {
-    let modJSon = require(path.join(app.getPath('userData'), "data", "mod.json"));
-    modJSon.files.forEach((mod) => {
-        db.getRows('user', location, {modid: mod.entryurl}, (succ, row) => {
-            if(succ) {
-                if(row.version_server !== mod.version) {
-                    db.updateRow('user', location, {modid: mod.entryurl}, {
-                        name: mod.name,
-                        category: mod.category,
-                        subcategory: mod.subcategory,
-                        version_server: mod.version,
-                        mod_state: mod.state,
-                        mod_time: mod.utc_changed,
-                        mod_file: "https://download.trainznation.tk/tf2/mod/packages/"+mod.download,
-                        mod_file_size: mod.download_size,
-                        mod_img: mod.imgFile,
-                        description: mod.description,
-                        changelogs: mod.changelog,
-                    }, (succ, msg) => {
-                        if(succ) {
-                            log.info("Mise a jours du contenue du fichier 'user': Terminer");
-                        } else {
-                            log.error("Erreur lors de la mise a jour du contenue du fichier 'User'");
-                            log.error("Erreur: "+msg);
-                            app.quit();
-                        }
-                    })
-                }
-            } else {
-                log.error("Erreur lors de la recuperation des donnees de la table 'user'");
-                log.error("Erreur: "+row);
-                app.quit();
-            }
-        })
-    })
-}
 
 function createWindow() {
     const iconFile = getPlatformIcon('logo');
@@ -362,7 +191,6 @@ function createWindow() {
 
     log.info("Démarrage du programme de téléchargement de mod pour TF2 version: "+pjson.version+" os: "+os.platform()+" arch: "+ os.arch());
     setTimeout(startUpdateCheckIfNotStarted, 800);
-    createDirectory()
 }
 
 function getPlatformIcon(logo) {
@@ -420,5 +248,9 @@ autoUpdater.on("update-downloaded", () => {
 
 ipcMain.on('update-available', (event, arg) => {
     console.log(arg);
-    autoUpdater.checkForUpdatesAndNotify();
+    if (openDev) {
+        autoUpdater.checkForUpdates()
+    } else {
+        autoUpdater.checkForUpdatesAndNotify();
+    }
 })
