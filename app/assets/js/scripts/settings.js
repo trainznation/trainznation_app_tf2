@@ -70,10 +70,19 @@ function setupSettingsTabs() {
 }
 
 const formUpdateConfig = $("#formUpTF2Config")
+const formUpdaterConfig = $("#formUpUpdateConfig")
 
 function populateFormConfigFromData() {
     formUpdateConfig.find('#path_tf2').val(config.configuration[0].path_tf2)
     formUpdateConfig.find('#path_tf2_mod').val(config.configuration[0].path_tf2_mod)
+}
+
+function populateFormUpdateFromData() {
+    if(config.configuration[0].launcher_auto_update === true) {
+        formUpdaterConfig.find('#launcher_auto_update').attr('checked', 'checked')
+    } else {
+        formUpdaterConfig.find('#launcher_auto_update').removeAttr('checked')
+    }
 }
 
 formUpdateConfig.on('submit', (e) => {
@@ -93,9 +102,19 @@ formUpdateConfig.on('submit', (e) => {
         btn.removeAttr('disabled')
         if(succ) {
             // Alert Dialog
+            Toastify({
+                text: "Configuration mise à jour",
+                backgroundColor: "#4CAF50",
+                position: 'right',
+            }).showToast();
             console.log(succ, msg)
         } else {
             //alert Dialog
+            Toastify({
+                text: msg,
+                backgroundColor: "#af4c4c",
+                position: 'right',
+            }).showToast();
             console.error(msg)
             log.error("Erreur traitement Formulaire de configuration")
             log.error(msg)
@@ -103,8 +122,37 @@ formUpdateConfig.on('submit', (e) => {
     })
 })
 
+formUpdaterConfig.find("#launcher_auto_update").on('change', (e) => {
+    e.preventDefault()
+    let checkbox = $(this)
+    let obj = {}
+    obj.launcher_auto_update = !!checkbox.is('checked');
+
+    db.updateRow('configuration', app.getPath('userData')+'/data/database', {idconfigurator: 1}, obj, (succ, msg) => {
+        if(succ) {
+            Toastify({
+                text: "Configuration mise à jour",
+                backgroundColor: "#4CAF50",
+                position: 'right',
+            }).showToast();
+            console.log(succ, msg)
+        } else {
+            Toastify({
+                text: msg,
+                backgroundColor: "#af4c4c",
+                position: 'right',
+            }).showToast();
+            console.error(msg)
+        }
+    })
+
+
+
+})
+
 function prepareConfigurationTab() {
     populateFormConfigFromData()
+    populateFormUpdateFromData()
 }
 
 const settingsTabChangelog = document.getElementById('changelog')
