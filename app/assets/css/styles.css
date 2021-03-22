@@ -827,25 +827,44 @@
           appearance: none;
   border-radius: 0.25rem;
 }
-#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > .settingChangelogContainer {
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion {
   display: flex;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(126, 126, 126, 0.57);
-  border-radius: 3px;
-  width: 75%;
-  margin-bottom: 20px;
+  flex-direction: row;
+  width: 100%;
 }
-#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > .settingChangelogContainer > .settingChangelogContent {
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > .settingChangelogCurrentVersionDetail {
   display: flex;
-  flex-direction: column;
-  padding: 15px;
+  align-items: flex-end;
+  margin-right: 30px;
 }
-#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > .settingChangelogContainer > .settingChangelogContent > .settingChangelogHeadline {
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > .settingChangelogCurrentVersionDetail > .settingChangelogCurrentVersionCheck {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 12px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > .settingChangelogCurrentVersionDetail > .currentVersionDetailTitle {
+  font-weight: bold;
+  font-size: 15px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > .settingChangelogCurrentVersionDetail > .currentVersionDetailTitle:after {
+  content: "-";
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > #settingChangelogButtons {
   display: flex;
-  align-items: center;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(126, 126, 126, 0.57);
+  align-items: flex-end;
+  flex: 2;
+  position: relative;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > #settingChangelogButtons > a {
+  margin: 0 10px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > #settingChangelogButtons > a:first-child {
+  margin: 0;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > #settingChangelogCurrentVersion > #settingChangelogButtons > a:last-child {
+  margin: 0;
 }
 #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer input[type=text] {
   color: white;

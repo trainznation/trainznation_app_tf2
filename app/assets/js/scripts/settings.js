@@ -166,7 +166,7 @@ document.getElementById('settingChangelogDevToolsButton').onclick = (e) => {
 }
 
 function populateVersionInformation(version, valueElement, titleElement, checkElement) {
-    valueElement.innerHTML = version
+    valueElement.innerHTML = 'v'+version
     titleElement.innerHTML = 'Stable Release'
 }
 
