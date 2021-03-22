@@ -1,6 +1,6 @@
 {
   "name": "trainznation_app_tf2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "productName": "Trainznation Mod Launcher",
   "description": "Launcher et téléchargement de mod Transport Fever 2 par Trainznation Studio",
   "main": "app/main.js",
