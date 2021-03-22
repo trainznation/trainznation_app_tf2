@@ -647,7 +647,7 @@
 }
 #settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom {
   position: absolute;
-  top: 65%;
+  top: 100%;
 }
 #settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > .divider {
   width: 75%;
@@ -745,6 +745,26 @@
           appearance: none;
   border-radius: 0.25rem;
 }
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > .settingChangelogContainer {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(126, 126, 126, 0.57);
+  border-radius: 3px;
+  width: 75%;
+  margin-bottom: 20px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > .settingChangelogContainer > .settingChangelogContent {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > .settingChangelogContainer > .settingChangelogContent > .settingChangelogHeadline {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(126, 126, 126, 0.57);
+}
 #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer input[type=text] {
   color: white;
   background: rgba(0, 0, 0, 0.25);
@@ -756,6 +776,74 @@
 #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer input[type=text]:focus {
   outline: none;
   border-color: rgba(126, 126, 126, 0.87);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: solid 1px transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  color: white;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+.btn-primary:hover, .btn-primary:active {
+  background-color: #08528d;
+  border-color: #064475;
+}
+
+.btn-warning {
+  color: white;
+  background-color: #FF9800;
+  border-color: #FF9800;
+}
+.btn-warning:hover, .btn-warning:active {
+  background-color: #804c00;
+  border-color: #663d00;
+}
+
+.btn-info {
+  color: white;
+  background-color: #607D8B;
+  border-color: #607D8B;
+}
+.btn-info:hover, .btn-info:active {
+  background-color: #2c3940;
+  border-color: #212c31;
+}
+
+.btn-danger {
+  color: white;
+  background-color: #f44336;
+  border-color: #f44336;
+}
+.btn-danger:hover, .btn-danger:active {
+  background-color: #a21309;
+  border-color: #891008;
+}
+
+.btn-success {
+  color: white;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.btn-success:hover, .btn-success:active {
+  background-color: #255627;
+  border-color: #1e441f;
 }
 
 body, html, div {

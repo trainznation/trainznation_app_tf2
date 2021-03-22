@@ -1,0 +1,69 @@
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+  border: solid 1px transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  color: white;
+}
+
+.btn-primary {
+  color: white;
+  background-color: $blue;
+  border-color: $blue;
+
+  &:hover, &:active {
+    background-color: darken($blue, 25%);
+    border-color: darken($blue, 30%);
+  }
+}
+
+.btn-warning {
+  color: white;
+  background-color: $orange;
+  border-color: $orange;
+
+  &:hover, &:active {
+    background-color: darken($orange, 25%);
+    border-color: darken($orange, 30%);
+  }
+}
+
+.btn-info {
+  color: white;
+  background-color: $blue-grey;
+  border-color: $blue-grey;
+
+  &:hover, &:active {
+    background-color: darken($blue-grey, 25%);
+    border-color: darken($blue-grey, 30%);
+  }
+}
+
+.btn-danger {
+  color: white;
+  background-color: $red-color;
+  border-color: $red-color;
+
+  &:hover, &:active {
+    background-color: darken($red-color, 25%);
+    border-color: darken($red-color, 30%);
+  }
+}
+
+.btn-success {
+  color: white;
+  background-color: $success;
+  border-color: $success;
+
+  &:hover, &:active {
+    background-color: darken($success, 25%);
+    border-color: darken($success, 30%);
+  }
+}

@@ -1,4 +1,4 @@
-<div id="settingsContainer">
+<div id="settingsContainer" style="display: none">
     <div class="settingContainerLeft">
         <div class="settingNavContainer">
             <div class="settingNavHeader">
@@ -7,8 +7,9 @@
             <div class="settingNavItemsContainer">
                 <div class="settingNavItemsContent">
                     <button class="settingNavItem" data-action="tf2" selected>Configuration TF2</button>
-                    <button class="settingNavItem" data-action="launcher">Launcher</button>
                     <button class="settingNavItem" data-action="update">Mise à jours</button>
+                    <div class="spacer"></div>
+                    <button class="settingNavItem" data-action="changelog">Changelog</button>
                     <div class="settingNavContentBottom">
                         <div class="divider"></div>
                         <div id="settingNavDone">Terminer</div>
@@ -29,14 +30,8 @@
                     <input type="text" class="input" id="path_tf2" name="path_tf2" />
                     <label for="path_tf2_mod" class="form-label">Dossier d'installation des mods de TF2</label>
                     <input type="text" class="input" id="path_tf2_mod" name="path_tf2_mod" />
-                    <button class="btn" type="button" id="btnSubmitFormUpConfig">Mettre à jour</button>
+                    <button class="btn btn-primary" type="button" id="btnSubmitFormUpConfig">Mettre à jour</button>
                 </form>
-            </div>
-        </div>
-        <div id="launcher" class="settingTab">
-            <div class="settingTabHeader">
-                <span class="headerText">Launcher</span>
-                <span class="headerDesc">Configuration du launcher</span>
             </div>
         </div>
         <div id="update" class="settingTab">
@@ -52,6 +47,41 @@
                         </label>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div id="changelog" class="settingTab">
+            <div class="settingTabHeader">
+                <span class="headerText">Note de Mise à jours</span>
+                <span class="headerDesc">Note sur la dernière mise à jours du Launcher</span>
+            </div>
+            <div class="settingTabContainer">
+                <div id="settingChangelogCurrentVersion">
+                    <div class="settingChangelogCurrentVersionCheck">&#10003;</div>
+                    <div class="settingChangelogCurrentVersionDetail">
+                        <span class="currentVersionDetailTitle">Stable Release</span>
+                        <div class="currentVersionDetailLine">
+                            <span id="currentVersionDetailText">Version</span>
+                            <span id="currentVersionDetailValue">0.0.2</span>
+                        </div>
+                    </div>
+                    <div id="settingChangelogButtons">
+                        <a href="https://github.com/trainznation/trainznation_app_tf2" id="settingChangelogSourceButton" class="btn btn-info">Source (GitHub)</a>
+                        <a href="https://github.com/trainznation/trainznation_app_tf2/issues" id="settingChangelogSupportButton" class="btn btn-info">Support</a>
+                        <a href="#" id="settingChangelogDevToolsButton" class="btn btn-info">DevTool</a>
+                    </div>
+                </div>
+                <div class="settingChangelogContainer">
+                    <div class="settingChangelogContent">
+                        <div class="settingChangelogHeadline">
+                            <div class="settingChangelogLabel">Note de Mise à jour</div>
+                            <div class="settingChangelogTitle">Changelog</div>
+                        </div>
+                        <div class="settingChangelogText">Aucune Notes disponible</div>
+                    </div>
+                    <div class="settingChangelogActions">
+                        <a href="#" class="btn btn-info settingChangelogButton">Voir la note de mise à jour sur github</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
