@@ -13,6 +13,8 @@ const pjson = require(path.join(__dirname, '../../package.json'));
 let config = require(app.getPath('userData')+'/data/database/configuration.json');
 console.log(config)
 
+moment.locale('fr');
+
 
 const VIEWS = {
     welcome: "#welcomeContainer",

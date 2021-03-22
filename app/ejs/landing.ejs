@@ -1,5 +1,6 @@
 <div id="landingContainer">
     <div id="landingContent">
+        <div id="modalNewsOverlay" style="display: none"></div>
         <div id="sidebarContainer">
             <div class="sidebar">
                 <div class="controlList">
@@ -9,14 +10,14 @@
                     <div class="sidebar_title">ACTUALITE DE TF2 Trainznation</div>
                     <div class="newsChannel">
                         <div class="newsChannelList">
-                            <a href="">
-                                <div class="channelOnPage active">
+                            <a href="" class="channelTab">
+                                <div class="channelOnPage">
                                     <div class="channelText">
                                         <div class="title">Toutes les news</div>
                                     </div>
                                 </div>
                             </a>
-                            <a href="">
+                            <a href="" class="channelTab" data-category="1" data-fetch="Transport Fever 2">
                                 <div class="channelOnPage">
                                     <div class="channelText">
                                         <div class="title">Transport Fever 2</div>
@@ -24,7 +25,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="">
+                            <a href="" class="channelTab" data-category="2" data-fetch="Trainznation Studio">
                                 <div class="channelOnPage">
                                     <div class="channelText">
                                         <div class="title">Trainznation Studio</div>
@@ -32,7 +33,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="">
+                            <a href="" class="channelTab" data-category="3" data-fetch="Developpement">
                                 <div class="channelOnPage">
                                     <div class="channelText">
                                         <div class="title">Developpement</div>
@@ -50,7 +51,7 @@
                 <section class="darken_background">
                     <header>
                         <div class="title">
-                            <span>Toutes Les News</span>
+                            <span id="channelTextTitle">Toutes Les News</span>
                             <div class="headerLine"></div>
                         </div>
                     </header>
