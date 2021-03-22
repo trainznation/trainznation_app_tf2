@@ -2,6 +2,7 @@ const {is, isFirstAppLaunch, openNewGitHubIssue} = require('electron-util')
 const {ipcRenderer} = require('electron')
 const remote = require('electron').remote
 const app = require('electron').remote.app
+const dialog = require('electron').dialog
 const path = require('path')
 const fs = require('fs-extra')
 const db = require('electron-db')
@@ -140,6 +141,7 @@ async function downloadModFileNotExist() {
 
 async function insertConfigData() {
     let DEFAULT_CONFIG = {
+        idconfigurator: 1,
         path_tf2: null,
         path_tf2_mod: null,
         launcher_auto_update: true,

@@ -8,17 +8,6 @@ function settingTabScrollListener(e) {
     }
 }
 
-function setupSettingsTabs() {
-    Array.from(document.getElementsByClassName('settingNavItem')).map((val) => {
-        if(val.hasAttribute('data-action')) {
-            val.onclick = () => {
-                settingsNavItemListener(val)
-            }
-        }
-    })
-    settingNavDone()
-}
-
 function settingsNavItemListener(ele, fade = true) {
     if(ele.hasAttribute('selected')) {
         return
@@ -67,6 +56,55 @@ function settingNavDone() {
     document.getElementById('settingNavDone').onclick = (e) => {
         switchView(VIEWS.settings, VIEWS.landing)
     }
+}
+
+function setupSettingsTabs() {
+    Array.from(document.getElementsByClassName('settingNavItem')).map((val) => {
+        if(val.hasAttribute('data-action')) {
+            val.onclick = () => {
+                settingsNavItemListener(val)
+            }
+        }
+    })
+    settingNavDone()
+}
+
+const formUpdateConfig = $("#formUpTF2Config")
+
+function populateFormConfigFromData() {
+    formUpdateConfig.find('#path_tf2').val(config.configuration[0].path_tf2)
+    formUpdateConfig.find('#path_tf2_mod').val(config.configuration[0].path_tf2_mod)
+}
+
+formUpdateConfig.on('submit', (e) => {
+    e.preventDefault()
+    let form = formUpdateConfig
+    let btn = form.find('button')
+    let data = form.serializeArray()
+
+    console.log(data)
+
+    btn.attr('disabled', true)
+
+    db.updateRow('configuration', app.getPath('userData')+'/data/database', {idconfigurator: 1}, {
+        path_tf2: data[0].value,
+        path_tf2_mod: data[1].value
+    }, (succ, msg) => {
+        btn.removeAttr('disabled')
+        if(succ) {
+            // Alert Dialog
+            console.log(succ, msg)
+        } else {
+            //alert Dialog
+            console.error(msg)
+            log.error("Erreur traitement Formulaire de configuration")
+            log.error(msg)
+        }
+    })
+})
+
+function prepareConfigurationTab() {
+    populateFormConfigFromData()
 }
 
 const settingsTabChangelog = document.getElementById('changelog')
@@ -121,6 +159,7 @@ function prepareChangelogTab() {
 
 function prepareSettings() {
     setupSettingsTabs()
+    prepareConfigurationTab()
     prepareChangelogTab()
 }
 
