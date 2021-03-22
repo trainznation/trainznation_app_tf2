@@ -45,8 +45,8 @@ document.querySelectorAll('[data-log="menuAction"]').forEach((menuAction) => {
                 remote.getCurrentWindow().close();
                 break;
 
-            case 'showShow':
-                switchView(getCurrentView(), VIEWS.mod)
+            case 'showShop':
+                switchView(getCurrentView(), VIEWS.shop)
                 break;
 
             case 'showMyMod':

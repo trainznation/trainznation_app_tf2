@@ -1214,6 +1214,116 @@
   border-color: #1e441f;
 }
 
+#shopContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px 16px;
+  margin: 35px auto;
+}
+#shopContainer > .shop_menu_container {
+  width: 98%;
+  height: 58px;
+  display: flex;
+  flex-direction: row;
+  border-top: solid 1px #2C313D;
+  border-bottom: solid 1px #2C313D;
+  background-color: rgba(250, 250, 250, 0.2);
+}
+#shopContainer > .shop_menu_container > ul {
+  list-style: none;
+}
+#shopContainer > .shop_menu_container > ul > .menu_item {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#shopContainer > .shop_menu_container > ul > .menu_item:last-child {
+  padding-right: 0;
+}
+#shopContainer > .shop_menu_container > ul > .menu_item > .menu_link {
+  color: #fff;
+}
+#shopContainer > .shop_menu_container > ul > .menu_item > .menu_link:hover, #shopContainer > .shop_menu_container > ul > .menu_item > .menu_link:focus {
+  color: #e5e4e4;
+  text-shadow: 0 0 11px #d4d2d2;
+  filter: blur(0.8px);
+}
+#shopContainer > .shop_menu_container > ul > .menu_item > .artifact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#shopContainer > .shop_menu_container > ul > .menu_item > .artifact > .logo_artifact_img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+#shopContainer > .shop_menu_container > .menu_left {
+  display: flex;
+  flex: 1;
+  justify-content: left;
+  align-items: center;
+}
+#shopContainer > .shop_menu_container > .menu_right {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+#shopContainer > .shop_body {
+  width: 80%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+#shopContainer > .shop_body > #table_shop > .tab_item {
+  position: relative;
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  height: 69px;
+  margin-bottom: 5px;
+  padding-left: 198px;
+  -webkit-text-size-adjust: none;
+}
+#shopContainer > .shop_body > #table_shop > .tab_item:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+#shopContainer > .shop_body > #table_shop > .tab_item > .tab_item_cap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  line-height: 69px;
+  transition: opacity 0.25s;
+}
+#shopContainer > .shop_body > #table_shop > .tab_item > .tab_item_content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 6px;
+  font-size: 12px;
+}
+#shopContainer > .shop_body > #table_shop > .tab_item > .tab_item_content > .tab_item_name {
+  color: #c7d5e0;
+  font-size: 1.25em;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  transition: color 0.25s;
+}
+#shopContainer > .shop_body > #table_shop > .tab_item > .tab_item_content > .tab_item_desc {
+  color: #384959;
+  line-height: 20px;
+  font-size: 10px;
+}
+#shopContainer > .shop_body > #table_shop > .tab_item > .tab_item_content > .tab_item_tags {
+  height: 20px;
+  white-space: normal;
+  overflow: hidden;
+}
+
 body, html, div {
   margin: 0;
   padding: 0;

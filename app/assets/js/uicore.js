@@ -22,7 +22,8 @@ const VIEWS = {
     settings: "#settingsContainer",
     landing: "#landingContainer",
     library: "#libraryContainer",
-    download: "#downloadContainer"
+    download: "#downloadContainer",
+    shop: "#shopContainer"
 };
 
 let currentView;
