@@ -575,6 +575,189 @@
   color: rgba(165, 165, 165, 0.75);
 }
 
+#settingsContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+#settingsContainer:before {
+  content: "";
+  background: linear-gradient(rgba(0, 0, 0, 0.25), transparent);
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+#settingsContainer[scrolled]:before {
+  opacity: 1;
+}
+#settingsContainer > .settingContainerLeft {
+  padding-top: 4%;
+  height: 100%;
+  width: 25%;
+  box-sizing: border-box;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavHeader {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavHeader > .settingNavHeaderText {
+  font-size: 20px;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer {
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavItem {
+  background: none;
+  border: none;
+  text-align: left;
+  margin: 5px 0px;
+  padding: 0px 20px;
+  color: grey;
+  cursor: pointer;
+  outline: none;
+  transition: 0.25s ease;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavItem:hover, #settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavItem:focus {
+  color: #c1c1c1;
+  text-shadow: 0px 0px 20px #c1c1c1;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavItem[selected] {
+  cursor: default;
+  color: white;
+  text-shadow: none;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom {
+  position: absolute;
+  top: 65%;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > .divider {
+  width: 75%;
+  height: 1px;
+  background: rgba(126, 126, 126, 0.57);
+  margin-left: auto;
+  margin-bottom: 25px;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > #settingNavDone {
+  background: none;
+  border: none;
+  text-align: left;
+  margin: 5px 0px;
+  padding: 0px 20px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  transition: 0.25s ease;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > #settingNavDone:hover, #settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > #settingNavDone:focus {
+  text-shadow: 0px 0px 20px white, 0px 0px 20px white, 0px 0px 20px white;
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > #settingNavDone:active {
+  text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.75), 0px 0px 20px rgba(255, 255, 255, 0.75), 0px 0px 20px rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
+}
+#settingsContainer > .settingContainerLeft > .settingNavContainer > .settingNavItemsContainer > .settingNavItemsContent > .settingNavContentBottom > #settingNavDone:disabled {
+  color: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+}
+#settingsContainer > .settingContainerRight {
+  height: 100%;
+  width: 75%;
+  box-sizing: border-box;
+}
+#settingsContainer > .settingContainerRight > .settingTab {
+  width: 100%;
+  height: 100%;
+}
+#settingsContainer > .settingContainerRight > .settingTab::-webkit-scrollbar {
+  width: 2px;
+}
+#settingsContainer > .settingContainerRight > .settingTab::-webkit-scrollbar-track {
+  display: none;
+}
+#settingsContainer > .settingContainerRight > .settingTab::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+#settingsContainer > .settingContainerRight > .settingTab *:first-child {
+  margin-top: 5%;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabHeader > .headerText {
+  font-size: 20px;
+  font-family: "Bitstream Vera Sans", sans-serif;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabHeader > .headerDesc {
+  font-size: 12px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer {
+  width: 90%;
+  position: relative;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer:last-child {
+  margin-bottom: 20px;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form > label {
+  display: inline-block;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form > label > .form-label {
+  margin-bottom: 0.5rem;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form > input, #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form button, #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form optgroup, #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form select, #settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form textarea {
+  margin-bottom: 0.836rem;
+  font-family: inherit;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer > form > .input {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #a8bac3;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0.25rem;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer input[type=text] {
+  color: white;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  border: 1px solid rgba(126, 126, 126, 0.57);
+  font-family: "Bitstream Vera Sans", sans-serif;
+  transition: 0.25s ease;
+}
+#settingsContainer > .settingContainerRight > .settingTab > .settingTabContainer input[type=text]:focus {
+  outline: none;
+  border-color: rgba(126, 126, 126, 0.87);
+}
+
 body, html, div {
   margin: 0;
   padding: 0;
@@ -588,6 +771,7 @@ p {
 body, button {
   font-family: "Bitstream Vera Sans", sans-serif;
   color: white;
+  overflow-x: hidden;
 }
 
 button {

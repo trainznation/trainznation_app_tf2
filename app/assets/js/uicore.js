@@ -7,7 +7,7 @@ const log = require("electron-log");
 const os = require('os')
 const path = require('path');
 const moment = require('moment');
-const pjson = require(path.resolve('package.json'));
+const pjson = require(path.join(__dirname, '../../package.json'));
 let config = require(app.getPath('userData')+'/data/database/configuration.json');
 console.log(config)
 

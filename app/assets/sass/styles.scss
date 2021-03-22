@@ -3,6 +3,7 @@
 @import "modules/dropdown";
 @import "modules/landing";
 @import "modules/overlay";
+@import "modules/settings";
 
 body, html, div {
   margin: 0;
@@ -17,6 +18,7 @@ p {
 body, button {
   font-family: 'Bitstream Vera Sans', sans-serif;
   color: white;
+  overflow-x: hidden;
 }
 
 button {

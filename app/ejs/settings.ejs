@@ -1,0 +1,59 @@
+<div id="settingsContainer">
+    <div class="settingContainerLeft">
+        <div class="settingNavContainer">
+            <div class="settingNavHeader">
+                <span class="settingNavHeaderText">Configuration</span>
+            </div>
+            <div class="settingNavItemsContainer">
+                <div class="settingNavItemsContent">
+                    <button class="settingNavItem" data-action="tf2" selected>Configuration TF2</button>
+                    <button class="settingNavItem" data-action="launcher">Launcher</button>
+                    <button class="settingNavItem" data-action="update">Mise à jours</button>
+                    <div class="settingNavContentBottom">
+                        <div class="divider"></div>
+                        <div id="settingNavDone">Terminer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="settingContainerRight">
+        <div id="tf2" class="settingTab">
+            <div class="settingTabHeader">
+                <span class="headerText">Transport Fever 2</span>
+                <span class="headerDesc">Configuration des paramètres de synchronisation avec Transport Fever 2</span>
+            </div>
+            <div class="settingTabContainer">
+                <form action="" id="formUpTF2Config">
+                    <label for="path_tf2" class="form-label">Dossier d'installation de TF2</label>
+                    <input type="text" class="input" id="path_tf2" name="path_tf2" />
+                    <label for="path_tf2_mod" class="form-label">Dossier d'installation des mods de TF2</label>
+                    <input type="text" class="input" id="path_tf2_mod" name="path_tf2_mod" />
+                    <button class="btn" type="button" id="btnSubmitFormUpConfig">Mettre à jour</button>
+                </form>
+            </div>
+        </div>
+        <div id="launcher" class="settingTab">
+            <div class="settingTabHeader">
+                <span class="headerText">Launcher</span>
+                <span class="headerDesc">Configuration du launcher</span>
+            </div>
+        </div>
+        <div id="update" class="settingTab">
+            <div class="settingTabHeader">
+                <span class="headerText">Mise à jour</span>
+                <span class="headerDesc">Configuration des mises à jours du launcher</span>
+            </div>
+            <div class="settingTabContainer">
+                <form action="" id="formUpUpdateConfig">
+                    <div class="form-group">
+                        <label for="autoUpdate">
+                            <input type="checkbox" name="launcher_auto_update" class="input" checked> Mise à jour automatique
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/js/scripts/settings.js"></script>

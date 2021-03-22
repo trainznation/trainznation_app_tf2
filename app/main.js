@@ -158,10 +158,11 @@ function createWindow() {
         slashes: true
     }))
 
-    if(openDev) {
+    mainWindow.webContents.openDevTools({mode: "bottom"});
+    /*if(openDev) {
         mainWindow.webContents.openDevTools({mode: "bottom"});
         log.info("Demarrage avec support de developpement active.");
-    }
+    }*/
 
     mainWindow.webContents.once('did-stop-loading', () => {})
 
