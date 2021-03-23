@@ -45,6 +45,10 @@ document.querySelectorAll('[data-log="menuAction"]').forEach((menuAction) => {
                 remote.getCurrentWindow().close();
                 break;
 
+            case 'showWelcome':
+                switchView(getCurrentView(), VIEWS.landing)
+                break;
+
             case 'showShop':
                 switchView(getCurrentView(), VIEWS.shop)
                 break;
