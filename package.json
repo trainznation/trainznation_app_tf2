@@ -57,8 +57,8 @@
     "node-fetch": "^2.6.1",
     "notyf": "^3.9.0",
     "request": "^2.88.2",
-    "semver": "^7.3.4",
-    "systeminformation": "^5.6.7",
+    "semver": "^7.3.5",
+    "systeminformation": "^5.6.8",
     "tar-fs": "^2.1.1",
     "toastify-js": "^1.9.3",
     "winreg": "^1.2.4"
@@ -74,6 +74,6 @@
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
-    "webpack": "^5.26.2"
+    "webpack": "^5.27.2"
   }
 }

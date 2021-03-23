@@ -8,6 +8,7 @@ const os = require('os')
 const path = require('path');
 const moment = require('moment');
 const db = require('electron-db');
+const slick = require(path.join(__dirname, "../", "assets","plugins", "slick", "slick.js"))
 const Toastify = require('toastify-js/src/toastify')
 const pjson = require(path.join(__dirname, '../../package.json'));
 let config = require(app.getPath('userData')+'/data/database/configuration.json');
@@ -23,7 +24,8 @@ const VIEWS = {
     landing: "#landingContainer",
     library: "#libraryContainer",
     download: "#downloadContainer",
-    shop: "#shopContainer"
+    shop: "#shopContainer",
+    shop_info: "#shopInfoContainer"
 };
 
 let currentView;
