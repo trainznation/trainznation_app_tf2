@@ -9,6 +9,7 @@ const db = require('electron-db')
 const log = require('electron-log')
 const system = require('systeminformation')
 const logger = require('./assets/js/scripts/loggerutil')('%c[Preloading...]', 'color: #a02d2a; font-weight: bold')
+const Toastify = require('toastify-js/src/toastify')
 
 
 const firstLaunch = !fs.existsSync(app.getPath('userData') + '/data')
@@ -109,6 +110,12 @@ async function fetchTrainzServer() {
                 log.error('Erreur lors de la connexion au serveur de trainznation')
                 log.error('file: preloader.js | func: fetchTrainzServer |line: 73')
                 log.error(err)
+                Toastify({
+                    text: "Impossible de ce connecter au serveur de données",
+                    backgroundColor: "#af4c4c",
+                    position: 'right',
+                }).showToast();
+                app.quit()
                 return false
             })
 }
@@ -122,6 +129,12 @@ async function fetchServerConnexion() {
                 log.error('Erreur lors de la connexion au serveur de téléchargement')
                 log.error('file: preloader.js | func: fetchTrainzServer |line: 73')
                 log.error(err)
+                Toastify({
+                    text: "Impossible de ce connecter au serveur de téléchargement",
+                    backgroundColor: "#af4c4c",
+                    position: 'right',
+                }).showToast();
+                app.quit();
                 return false
             })
 }

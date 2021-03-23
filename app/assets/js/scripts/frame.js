@@ -34,6 +34,13 @@ function fetchingAnnounce() {
                 document.querySelector('.notifications').innerHTML += `<li><span class="iconify" data-inline="false" data-icon="${type[data.type].icon}" style="color: ${type[data.type].color}"></span> ${data.title}</li>`;
             })
         })
+        .catch(err => {
+            Toastify({
+                text: "Impossible de ce connecter au serveur de donnée: "+err,
+                backgroundColor: "#af4c4c",
+                position: 'right',
+            }).showToast();
+        })
 }
 
 setTimeout(() => {
