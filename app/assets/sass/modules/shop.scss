@@ -74,9 +74,9 @@
     > #table_shop {
       > .tab_item {
         position: relative;
-        display: block;
+        display: none;
         background: rgba( 0, 0, 0, 0.2 );
-        height: 69px;
+        height: 97px;
         margin-bottom: 5px;
         padding-left: 198px;
         -webkit-text-size-adjust: none;
@@ -92,6 +92,10 @@
           z-index: 3;
           line-height: 69px;
           transition: opacity 0.25s;
+
+          > img {
+            max-width: 169px;
+          }
         }
 
         > .tab_item_content {
@@ -122,6 +126,8 @@
             height: 20px;
             white-space: normal;
             overflow: hidden;
+            color: #a1a1a1;
+            font-size: 9px;
           }
         }
       }

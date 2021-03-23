@@ -2,12 +2,14 @@
 @import "../plugins/slick/slick";
 @import "../plugins/slick/slick-theme";
 @import "modules/variables";
-@import "modules/topbar";
+@import "modules/global";
+@import "modules/button";
 @import "modules/dropdown";
+@import "modules/loading";
+@import "modules/topbar";
 @import "modules/landing";
 @import "modules/overlay";
 @import "modules/settings";
-@import "modules/button";
 @import "modules/shop";
 
 body, html, div {

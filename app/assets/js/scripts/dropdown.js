@@ -29,6 +29,7 @@ document.querySelectorAll(".dropdown").forEach(function(btn){
     btn.addEventListener("click",toggle,true);
 });
 
+
 document.querySelectorAll('[data-log="menuAction"]').forEach((menuAction) => {
     menuAction.addEventListener('click', (e) => {
         e.preventDefault()

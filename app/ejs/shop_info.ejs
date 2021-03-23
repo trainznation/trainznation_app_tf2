@@ -1,40 +1,12 @@
 <div id="shopInfoContainer" style="display: none">
-    <div class="shop_menu_container">
-        <ul class="menu_left">
-            <li class="menu_item active">
-                <a href="" class="menu_link">Tous</a>
-            </li>
-            <li class="menu_item">
-                <a href="" class="menu_link">Ponts</a>
-            </li>
-            <li class="menu_item">
-                <a href="" class="menu_link">Batiments</a>
-            </li>
-            <li class="menu_item">
-                <a href="" class="menu_link">Bus</a>
-            </li>
-        </ul>
-        <ul class="menu_right">
-            <li class="menu_item">
-                <a href="" class="menu_link artifact">
-                    <img src="../assets/images/logo_artifact.png" alt="" class="logo_artifact_img">
-                    <span class="logo_artifact_title">Artifact</span>
-                </a>
-            </li>
-        </ul>
-    </div>
     <div class="shopInfoContent">
         <div class="page_title_area">
             <div class="breadcrumbs">
-                <div class="blockbg">
-                    <a href="">Tous les mods</a> >
-                    <a href="">Pont</a> >
-                    <a href="">Bridge Overpass</a>
-                </div>
+                <div class="blockbg"></div>
             </div>
             <div class="headerContent">
                 <div class="headerStandardTop">
-                    <div class="appName">BRIDGE OVERPASS</div>
+                    <div class="appName"></div>
                 </div>
             </div>
         </div>
@@ -44,21 +16,21 @@
                     <div class="rightcol">
                         <div class="glance">
                             <div class="mod_header_image">
-                                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg?t=1615811936" alt="" class="mod_header_image_full">
+                                <img src="" alt="" class="mod_header_image_full">
                             </div>
-                            <div class="mod_description_snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero provident, tempore. Atque aut consequatur deleniti dolores eligendi pariatur quod tempora veritatis! A animi asperiores beatae consequuntur dolorum, labore quas tempora?</div>
+                            <div class="mod_description_snippet"></div>
                             <div class="responsive_left">
                                 <div class="review">
                                     <div class="review_summary_row">
                                         <div class="subtitle">Date de publication</div>
                                         <div class="summary">
-                                            <span class="summary_text">10 Mars 2021</span>
+                                            <span class="summary_text" data-flesh="date"></span>
                                         </div>
                                     </div>
                                     <div class="review_summary_row">
                                         <div class="subtitle">Dernière version</div>
                                         <div class="summary">
-                                            <span class="summary_text">1.0</span>
+                                            <span class="summary_text" data-flesh="version"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -66,12 +38,7 @@
                             <div class="responsive_right">
                                 <div class="tags">
                                     <div class="tags_label">Liste des tags associés à ce mod</div>
-                                    <div class="tags_content">
-                                        <a href="" class="app_tag">locomotive</a>
-                                        <a href="" class="app_tag">x72500</a>
-                                        <a href="" class="app_tag">bridge</a>
-                                        <a href="" class="app_tag">beginning</a>
-                                    </div>
+                                    <div class="tags_content"></div>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +64,7 @@
         </div>
         <div class="page_content_body">
             <div class="rightcol mod_meta_data">
-                <div class="block">
+                <div class="block" id="mod_meta_data">
                     <div class="detail_spec_container">
                         <div class="icon">
                             <span class="iconify" data-inline="false" data-icon="openmoji:motor"></span>
@@ -135,14 +102,14 @@
                     <div class="wrapper">
                         <div class="mod_area_download_mod">
                             <form id="formDownloadMod">
-                                <input type="hidden" name="package" value="trainznation_bridge_1">
+                                <input type="hidden" name="package" value="">
                                 <input type="hidden" name="action" value="adding_library">
                             </form>
-                            <h1>Télécharger Bridge Overpass</h1>
+                            <h1 id="downloadTitleText"></h1>
                             <div class="mod_download_actions">
                                 <div class="mod_download_actions_bg">
                                     <div class="btn_addtolibrary">
-                                        <a href="" class="btn btn-success"><span>Télécharger ce mod</span></a>
+                                        <a href="" class="btn btn-success isDisabled" title="Disponible Bientôt"><span>Télécharger ce mod</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -153,49 +120,17 @@
                 <section id="featureNews">
                     <div class="feature_news">
                         <header>Annonces et news concernant ce mod</header>
-                        <div class="news_summary">
-                            <a href="" class="summary_row">
-                                <div class="summary_news_bg" style="background-color: rgb(255,255,255); background-image: url('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/35210272/27df34a3b3381c5f8d839eae8c195bc8162bef03_400x225.png');"></div>
-                                <div class="summary_news_content">
-                                    <div class="main_image_ctn">
-                                        <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/35210272/27df34a3b3381c5f8d839eae8c195bc8162bef03_400x225.png" class="main_image" alt="">
-                                    </div>
-                                    <div class="text_ctn">
-                                        <div class="title">Mise à jour 1.0 - Alpha</div>
-                                        <div class="date">Ven 19 mars 2021 17:00</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="" class="summary_row">
-                                <div class="summary_news_bg" style="background-color: rgb(255,255,255); background-image: url('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/35210272/27df34a3b3381c5f8d839eae8c195bc8162bef03_400x225.png');"></div>
-                                <div class="summary_news_content">
-                                    <div class="main_image_ctn">
-                                        <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/35210272/27df34a3b3381c5f8d839eae8c195bc8162bef03_400x225.png" class="main_image" alt="">
-                                    </div>
-                                    <div class="text_ctn">
-                                        <div class="title">Mise à jour 1.0 - Alpha</div>
-                                        <div class="date">Ven 19 mars 2021 17:00</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <div class="news_summary"></div>
                     </div>
                 </section>
                 <div class="spacer" style="height: 5px;"></div>
                 <section id="modDescription">
                     <div class="mod_description_container">
                         <header>à propos de ce mod</header>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem eligendi illo nesciunt perferendis placeat possimus quae quaerat, repellat sint. At deleniti enim iste mollitia nihil nulla rem temporibus voluptatibus.</p>
+                        <div id="modDescriptionContent"></div>
                     </div>
                 </section>
             </div>
         </div>
     </div>
 </div>
-<script src="../assets/js/scripts/shop_info.js"></script>

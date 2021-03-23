@@ -67,3 +67,20 @@
     border-color: darken($success, 30%);
   }
 }
+
+.btn-outline-primary {
+  color: white;
+  background-color: transparent;
+  border-color: $blue;
+
+  &:hover, &:active {
+    background-color: $blue;
+    border-color: darken($blue, 30%);
+  }
+}
+
+#btnLoadMore {
+  margin: 10px 10%;
+  width: inherit;
+  height: 75px;
+}
