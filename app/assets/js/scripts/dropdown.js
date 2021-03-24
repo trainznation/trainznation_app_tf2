@@ -79,6 +79,20 @@ document.querySelectorAll('[data-log="menuAction"]').forEach((menuAction) => {
                 toggleOverlay(true)
                 break;
 
+            case 'showWebsite':
+                shell.openExternal('https://tf2.trainznation.tk/app').catch(err => {
+                    setOverlayContent(
+                        'Erreur !!',
+                        `Erreur: ${err}`,
+                        'Fermer',
+                        true
+                    )
+                    setOverlayHandler(() => {
+                        document.getElementById('overlayContainer').style.display = 'none';
+                    })
+                    toggleOverlay(true)
+                })
+
 
         }
     })

@@ -3,6 +3,7 @@ const {is, isFirstAppLaunch} = require('electron-util')
 const {ipcRenderer} = require('electron');
 const remote = require('electron').remote;
 const app = require('electron').remote.app
+const shell = require('electron').shell
 const log = require("electron-log");
 const os = require('os')
 const path = require('path');

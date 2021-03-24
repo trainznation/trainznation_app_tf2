@@ -53,34 +53,6 @@ if (process.mas) app.setName(pjson.productName);
 autoUpdater.logger = log;
 log.info("Demarrage de l'application...");
 
-/**
- * Function Start
- * - StartUpdateCheckIfNotStarted() : Permet de démarrer la vérification
- *                                    de la mise à jour du programme si il n'est pas démarrer automatiquement.
- *
- * - updateJsonFileMod() asyncFunction: Met à jour la liste des mod disponible
- *
- * - createConfigurationFile() : Créer la table de configuration si elle n'existe
- *                               pas.
- *
- * - initUserTable() : Initialisation de la table Utilisateur, cette table est
- *                     remplie par le téléchargement du fichier de mod plus les informations
- *                     d'installation et permet d'avoir une base d'installation pour
- *                     l'utilisateur du programme.
- *
- * - initUserModTable(): Remplie la table utilisateurs des données relative
- *                       au fichier de mod télécharger précédement par le programme.
- *                       Actif uniquement si le résultat de la fonction initUserTable() est à
- *                       false.
- *
- * - updateUserModTable(): Remplie la table utilisateurs des données relative
- *                         au fichier de mod télécharger précédement par le programme.
- *                         Actif uniquement si le résultat de la fonction initUserTable() est à
- *                         true.
- * - createWindow(): Création de la fenetre principal de rendu electron
- *
- * - getPlatformIcon(): Définition du chemin d'accès au fichier d'icone de l'application
- */
 
 function startUpdateCheckIfNotStarted() {
     if (updateCheckStarted)
