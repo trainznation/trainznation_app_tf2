@@ -7,17 +7,27 @@ document.querySelector('[data-action="returnView"]').addEventListener('click', (
     switchView(actual, VIEWS.shop)
 })
 
+function closeNewModOverlay() {
+    let close = document.querySelectorAll('.closeBtn')
+
+    close.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            document.querySelector('#modalNewsModOverlay').style.display = 'none'
+        })
+    })
+}
+
 function onClickItemMod() {
     let items = document.querySelectorAll('.tab_item')
 
     items.forEach((item) => {
         item.addEventListener('click', (e) => {
             e.preventDefault()
-            console.log(item.dataset.modId)
+            $("#shopInfoContainer").attr('data-mod', item.dataset.modId)
+            let modId = $("#shopInfoContainer").attr('data-mod')
             fetch(config.configuration[0].endpoint+'/mod/mod/'+item.dataset.modId)
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json)
                     let data = json.DATA
                     document.querySelector('.blockbg').innerHTML = `<a>Tous les mods</a> > <a>${data.category.name}</a> > <a>${data.name}</a>`;
                     document.querySelector('.appName').innerHTML = data.name;
@@ -47,22 +57,66 @@ function onClickItemMod() {
                     document.querySelector('#modDescriptionContent').innerHTML = data.description;
                     document.querySelector('.news_summary').innerHTML = ``;
 
-                    data.news.forEach((news) => {
-                        document.querySelector('.news_summary').innerHTML = `
-                            <a href="" class="summary_row">
-                                <div class="summary_news_bg" style="background-color: rgb(255,255,255); background-image: url('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/35210272/27df34a3b3381c5f8d839eae8c195bc8162bef03_400x225.png');"></div>
-                                <div class="summary_news_content">
-                                    <div class="main_image_ctn">
-                                        <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/35210272/27df34a3b3381c5f8d839eae8c195bc8162bef03_400x225.png" class="main_image" alt="">
-                                    </div>
-                                    <div class="text_ctn">
-                                        <div class="title">${news.title}</div>
-                                        <div class="date">${news.published_at}</div>
-                                    </div>
-                                </div>
-                            </a>
-                        `;
+                    let headers = {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    };
+
+                    let body = {
+                        "limit": 2,
+                        "state": 2,
+                        "order": "published_at",
+                        "sort": "asc"
+                    }
+                    fetch(config.configuration[0].endpoint+'/mod/mod/'+modId+'/news/filter',{
+                        method: 'POST',
+                        headers,
+                        body: JSON.stringify(body),
                     })
+                        .then(res => res.json())
+                        .then(json => {
+                            if(Array.from(json.DATA).length !== 0) {
+                                json.DATA.forEach((nouv) => {
+                                    document.querySelector('.news_summary').innerHTML += `
+                                    <a href="" class="summary_row" data-mod="${nouv.mod_id}" data-id="${nouv.id}">
+                                        <div class="summary_news_bg" style="background-color: rgb(255,255,255); background-image: url('${nouv.images}');"></div>
+                                        <div class="summary_news_content">
+                                            <div class="main_image_ctn">
+                                                <img src="${nouv.images}" class="main_image" alt="">
+                                            </div>
+                                            <div class="text_ctn">
+                                                <div class="title">${nouv.title}</div>
+                                                <div class="date">${nouv.published_at.format}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                `;
+                                    onClickItemModNews()
+                                })
+                            } else {
+                                document.querySelector('.news_summary').innerHTML += `
+                                <div class="summary_row_not_content_container"> 
+                                    <div class="icon"> 
+                                        <span class="iconify" data-inline="false" data-icon="ant-design:warning-outlined"></span>
+                                    </div>
+                                    <div class="text">Aucune news actuellement disponible pour ce mod</div>
+                                </div>
+                                `;
+                            }
+                        })
+                        .catch(err => {
+                            setOverlayContent(
+                                'Erreur Système de récupération de contenue',
+                                "Erreur: "+err,
+                                'Fermer', 'Dismiss'
+                            )
+                            setOverlayHandler(() => {
+                                const window = remote.getCurrentWindow();
+                                window.close()
+                            })
+                            toggleOverlay(true)
+                            console.error(err)
+                        })
 
                     switchView(getCurrentView(), VIEWS.shop_info)
                 })
@@ -76,6 +130,68 @@ function onClickItemMod() {
                         const window = remote.getCurrentWindow();
                         window.close()
                     })
+                    toggleOverlay(true)
+                    console.error(err)
+                })
+        })
+    })
+}
+
+function onClickItemModNews() {
+    let items = document.querySelectorAll('.summary_row')
+
+    items.forEach((item) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault()
+            fetch(config.configuration[0].endpoint+'/mod/mod/'+item.dataset.mod+'/news/'+item.dataset.id)
+                .then(res => res.json())
+                .then(json => {
+                    let modal = document.getElementById("modalNewsModOverlay")
+                    modal.innerHTML = ``
+                    modal.innerHTML += `
+                    <div class="newsOverlayPage">
+                        <div class="newsBody" tabindex="-1">
+                            <div class="newsCtnSection">
+                                <div class="newsCtnSectionWidth">
+                                    <div class="newsCtnSectionRightSide">
+                                        <div class="closeBtn">
+                                            <span class="iconify" data-inline="false" data-icon="clarity:close-line"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="newsContainer">
+                                <div class="newsContainerDisplay">
+                                    <img src="${json.DATA.images}" alt="" class="display_cover_background">
+                                    <img src="${json.DATA.images}" alt="" class="display_background_blur">
+                                    <div class="titleContainer">
+                                        <div class="titleContainerDetail">
+                                            <div class="detailTypeAndTime">
+                                                <div class="detailTimeInfo">PUBLIE le ${json.DATA.published_at.format}</div>
+                                            </div>
+                                            <a href="" class="title">${json.DATA.title}</a>
+                                            <div class="subtitle">${json.DATA.short}</div>
+                                        </div>
+                                    </div>
+                                    <div class="bodyContainer">
+                                        <div class="bodyContainerDetail">
+                                            ${json.DATA.content}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    modal.style.display = 'block';
+                    closeNewModOverlay()
+                })
+                .catch(err => {
+                    setOverlayContent(
+                        'Erreur Système de récupération de contenue',
+                        "Erreur: "+err,
+                        'Fermer', 'Dismiss'
+                    )
                     toggleOverlay(true)
                     console.error(err)
                 })

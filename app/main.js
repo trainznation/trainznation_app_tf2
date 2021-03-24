@@ -19,7 +19,6 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const location = path.join(app.getPath('userData'), 'data', 'database')
 const openLinksInExternal = true
-console.log(location)
 
 const debug = /--debug/.test(process.argv[2])
 const args = process.argv.slice(2)
@@ -248,7 +247,6 @@ autoUpdater.on("update-downloaded", () => {
 });
 
 ipcMain.on('update-available', (event, arg) => {
-    console.log(arg);
     if (openDev) {
         autoUpdater.checkForUpdates()
     } else {

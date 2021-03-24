@@ -104,7 +104,6 @@ async function fetchTrainzServer() {
     await fetch(api_endpoint)
             .then(res => res.json())
             .then(json => {
-                console.log(json)
             })
             .catch(err => {
                 log.error('Erreur lors de la connexion au serveur de trainznation')

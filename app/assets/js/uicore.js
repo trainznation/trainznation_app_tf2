@@ -12,7 +12,6 @@ const slick = require(path.join(__dirname, "../", "assets","plugins", "slick", "
 const Toastify = require('toastify-js/src/toastify')
 const pjson = require(path.join(__dirname, '../../package.json'));
 let config = require(app.getPath('userData')+'/data/database/configuration.json');
-console.log(config)
 
 moment.locale('fr');
 
@@ -113,10 +112,8 @@ document.addEventListener('readystatechange', () => {
         testingServerOpen().then(r => {
             const data = {}
             showMainUI(data)
-            console.log(config.configuration[0].endpoint);
         }).catch(err => {
             showFatalStartupError()
-            console.log("System: ERROR")
             console.error("System: "+err)
         })
     }

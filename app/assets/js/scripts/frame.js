@@ -21,7 +21,6 @@ function fetchingAnnounce() {
     fetch(config.configuration[0].endpoint+'/setting/announcement')
         .then(res => res.json())
         .then(json => {
-            console.log(json)
             document.querySelector('.notifications').innerHTML = ``;
             Array.from(json.DATA).forEach((data) => {
                 let type = {

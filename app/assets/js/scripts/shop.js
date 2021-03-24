@@ -34,7 +34,6 @@ function populateAllMod() {
     fetch(config.configuration[0].endpoint+'/mod/mod')
         .then(res => res.json())
         .then(json => {
-            console.log(json)
             table_shop.innerHTML = ``;
             loading.style.display = 'none';
             $("#btnLoadMore").show()

@@ -91,8 +91,6 @@ formUpdateConfig.on('submit', (e) => {
     let btn = form.find('button')
     let data = form.serializeArray()
 
-    console.log(data)
-
     btn.attr('disabled', true)
 
     db.updateRow('configuration', app.getPath('userData')+'/data/database', {idconfigurator: 1}, {
@@ -107,7 +105,6 @@ formUpdateConfig.on('submit', (e) => {
                 backgroundColor: "#4CAF50",
                 position: 'right',
             }).showToast();
-            console.log(succ, msg)
         } else {
             //alert Dialog
             Toastify({
@@ -135,7 +132,6 @@ formUpdaterConfig.find("#launcher_auto_update").on('change', (e) => {
                 backgroundColor: "#4CAF50",
                 position: 'right',
             }).showToast();
-            console.log(succ, msg)
         } else {
             Toastify({
                 text: msg,
@@ -178,7 +174,6 @@ function populateReleaseNote() {
     $.ajax({
         url: 'https://github.com/trainznation/trainznation_app_tf2/releases.atom',
         success: (data) => {
-            console.log(data)
             const version = `v${remote.app.getVersion()}`
             const entries = $(data).find('entry')
 

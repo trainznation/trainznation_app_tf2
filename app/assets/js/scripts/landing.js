@@ -199,12 +199,22 @@ function clickOnNews() {
                 .catch(err => {
                     console.error(err)
                 })
+
+
         })
     })
 }
 
 function closeNewOverlay() {
     let btn = $("#modalNewsOverlay").find('.closeBtn')
+    let close = document.querySelectorAll('.closeBtn')
+
+    close.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            document.querySelector('#modalNewsOverlay').style.display = 'none'
+        })
+    })
+
     btn.on('click', (e) => {
         e.preventDefault()
         document.querySelector('#modalNewsOverlay').style.display = 'none'
