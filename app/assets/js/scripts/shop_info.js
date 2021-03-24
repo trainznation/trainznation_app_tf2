@@ -46,7 +46,7 @@ function onClickItemMod() {
                         document.querySelector('#mod_meta_data').innerHTML += `
                         <div class="detail_spec_container">
                             <div class="icon">
-                                <span class="iconify" data-inline="false" data-icon="${feat.icon}" title="${feat.name}"></span>
+                                <span class="iconify" data-inline="false" data-icon="${feat.icon}" title="${feat.type}"></span>
                             </div>
                             <a href="" class="name">${feat.value}</a>
                         </div>
