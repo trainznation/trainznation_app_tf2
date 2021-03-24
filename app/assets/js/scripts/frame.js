@@ -30,7 +30,7 @@ function fetchingAnnounce() {
                     'danger': {'icon': 'uil:times-square', 'color': 'red'},
                 }
 
-                document.querySelector('.notifications').innerHTML += `<li><span class="iconify" data-inline="false" data-icon="${type[data.type].icon}" style="color: ${type[data.type].color}"></span> ${data.title}</li>`;
+                document.querySelector('.notifications').innerHTML += `<li><span class="iconify" data-inline="false" data-icon="${type[data.type].icon}" style="color: ${type[data.type].color}; width: 34px; height: 34px;"></span> ${data.title}</li>`;
             })
         })
         .catch(err => {

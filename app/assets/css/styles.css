@@ -202,8 +202,16 @@
   top: 30px;
 }
 .dropdown-menu > li {
-  margin: 5px 0;
+  margin: 15px 5px;
   color: #7f8fa0;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+}
+.dropdown-menu > li > svg {
+  width: 34px;
+  display: flex;
+  align-items: center;
 }
 .dropdown-menu > li > hr {
   width: 100%;
@@ -214,6 +222,7 @@
   min-width: 290px;
   right: 45px;
   top: 45px;
+  max-width: 400px;
 }
 .notifications > li {
   font-size: 12px;
