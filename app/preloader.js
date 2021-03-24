@@ -149,16 +149,4 @@ if(firstLaunch === true) {
         })
         app.quit()
     })
-} else {
-    fetchTrainzServer().then(() => {
-        log.info("Chargement Initial terminer !")
-    }).catch(err => {
-        log.error("Erreur: "+err)
-        openNewGitHubIssue({
-            user: "trainznation",
-            repo: "trainznation_app_tf2",
-            body: err
-        })
-        app.quit()
-    })
 }
