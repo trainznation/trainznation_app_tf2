@@ -46,7 +46,7 @@ function onClickItemMod() {
                         document.querySelector('#mod_meta_data').innerHTML += `
                         <div class="detail_spec_container">
                             <div class="icon">
-                                <span class="iconify" data-inline="false" data-icon="${feat.type.icon}" title="${feat.type.name}"></span>
+                                <span class="iconify" data-inline="false" data-icon="${feat.icon}" title="${feat.name}"></span>
                             </div>
                             <a href="" class="name">${feat.value}</a>
                         </div>
@@ -62,7 +62,7 @@ function onClickItemMod() {
                         "Accept": "application/json",
                     };
 
-                    let body = {
+                    let bodyNews = {
                         "limit": 2,
                         "state": 2,
                         "order": "published_at",
@@ -71,7 +71,7 @@ function onClickItemMod() {
                     fetch(config.configuration[0].endpoint+'/mod/mod/'+modId+'/news/filter',{
                         method: 'POST',
                         headers,
-                        body: JSON.stringify(body),
+                        body: JSON.stringify(bodyNews),
                     })
                         .then(res => res.json())
                         .then(json => {
@@ -103,6 +103,92 @@ function onClickItemMod() {
                                 </div>
                                 `;
                             }
+                        })
+                        .catch(err => {
+                            setOverlayContent(
+                                'Erreur Système de récupération de contenue',
+                                "Erreur: "+err,
+                                'Fermer', 'Dismiss'
+                            )
+                            setOverlayHandler(() => {
+                                const window = remote.getCurrentWindow();
+                                window.close()
+                            })
+                            toggleOverlay(true)
+                            console.error(err)
+                        })
+
+                    let bodyFile = {
+                        "type": ["image", "video"]
+                    }
+
+                    fetch(config.configuration[0].endpoint+'/mod/mod/'+modId+'/files/filter', {
+                        method: "POST",
+                        headers,
+                        body: JSON.stringify(bodyFile),
+                    })
+                        .then(res => res.json())
+                        .then(json => {
+                            let carouselContent = document.getElementById('carousel_content')
+                            let carouselNav = document.getElementById('carousel_nav')
+                            carouselContent.innerHTML = ``
+                            carouselNav.innerHTML = ``
+                            let splideNav = new Splide( '.carousel_nav' , {
+                                fixedWidth  : 100,
+                                height      : 60,
+                                gap         : 10,
+                                cover       : true,
+                                isNavigation: true,
+                                focus       : 'center',
+                                breakpoints : {
+                                    '600': {
+                                        fixedWidth: 66,
+                                        height    : 40,
+                                    }
+                                },
+                            }).mount(window.splide.Extensions);
+                            let splide = new Splide( '.carousel_content', {
+                                type       : 'fade',
+                                heightRatio: 0.5,
+                                pagination : false,
+                                arrows     : false,
+                                cover      : true,
+                            } ).mount(window.splide.Extensions);
+
+                            splide.sync(splideNav).mount();
+
+                            json.DATA.forEach((file) => {
+                                if(file.type === 'image') {
+                                    carouselContent.innerHTML += `
+                                    <li class="splide__slide"> 
+                                        <img src="${file.file_uri}" alt="${file.nameFile}" />
+                                    </li>
+                                `
+
+                                    carouselNav.innerHTML += `
+                                    <li class="splide__slide"> 
+                                        <img src="${file.file_uri}" alt="${file.nameFile}" />
+                                    </li>
+                                `
+                                }
+
+                                if(file.type === 'video') {
+                                    carouselContent.innerHTML += `
+                                    <li class="splide__slide" data-splide-html-video="${file.file_uri}"> 
+                                        <img src="${file.file_uri}" alt="${file.nameFile}" />
+                                    </li>
+                                `
+
+                                    carouselNav.innerHTML += `
+                                    <li class="splide__slide"> 
+                                        <img src="${file.file_uri}" alt="${file.nameFile}" />
+                                    </li>
+                                `
+                                }
+                            })
+
+                            console.log(json)
+                            console.info("Carousel Charger")
                         })
                         .catch(err => {
                             setOverlayContent(
@@ -199,25 +285,8 @@ function onClickItemModNews() {
     })
 }
 
-$(document).ready(() => {
-    $(".carousel_content").slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        lazyLoad: "ondemand",
-        arrows: false,
-        fade: true,
-        asNavFor: '.carousel_nav'
-    })
+document.addEventListener( 'DOMContentLoaded', function () {
 
-    $(".carousel_nav").slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        asNavFor: '.carousel_content',
-        dots: true,
-        centerMode: true,
-        focusOnSelect: true,
-        arrows: true
-    })
 })
 
 exports.onClickItemMod = onClickItemMod;
