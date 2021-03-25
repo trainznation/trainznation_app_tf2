@@ -345,12 +345,20 @@
   background-color: #4CAF50;
 }
 
-.badge-fix {
+.badge-fixed {
   background-color: #FFC107;
 }
 
-.badge-delete {
+.badge-improved {
+  background-color: #FF9800;
+}
+
+.badge-deleted {
   background-color: #f44336;
+}
+
+.badge-new {
+  background-color: #2196F3;
 }
 
 .btn {

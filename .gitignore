@@ -4,3 +4,4 @@
 /data/database/*.json
 /data/*.json
 package-lock.json
+changelog_tf2_mod.json
