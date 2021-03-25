@@ -1,3 +1,10 @@
+document.querySelector('[data-action="returnView"]').addEventListener('click', (e) => {
+    e.preventDefault()
+    let actual = VIEWS.changelog
+
+    switchView(actual, VIEWS.landing)
+})
+
 function InitChangelog() {
     let releaseNote = $('#release-notes')
     releaseNote.html('<div class="loader">&nbsp;</div>')
