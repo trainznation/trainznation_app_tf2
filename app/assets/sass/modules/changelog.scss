@@ -1,0 +1,99 @@
+#changelogContainer {
+  * {
+    box-sizing: border-box;
+  }
+
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+
+  > .titleContainer {
+    padding: 16px !important;
+    margin-bottom: 24px !important;
+    border-bottom: 1px #e1e4e8 solid;
+    border-color: rgba(255,255,255,0.1) !important;
+
+    > .title {
+      font-size: 32px;
+      font-weight: 300;
+      color: white;
+    }
+  }
+
+  .releaseNoteSection {
+    max-width: 1280px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    position: relative !important;
+
+    > .timeline-decorator {
+      display: flex;
+      margin-bottom: 16px;
+      align-items: center !important;
+      margin-left: 12px;
+
+      &:before {
+        content: "";
+        background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.1));
+        width: 3px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc((65px / 2) + 16px);
+        z-index: -1;
+      }
+
+      > .version-badge {
+        width: 65px;
+        text-align: center;
+        display: inline-block !important;
+        font-weight: 600 !important;
+        padding: 4px !important;
+        margin-right: 8px !important;
+        border-radius: 10px;
+      }
+
+      > .version-date {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: top;
+        max-width: 100% !important;
+        font-size: 20px !important;
+        font-weight: 300 !important;
+      }
+    }
+
+    > .changelog {
+      margin-left: 74px !important;
+      list-style: none;
+
+      li {
+        display: flex;
+        margin-bottom: 8px;
+        align-items: flex-start;
+      }
+    }
+
+    ul {
+      padding-left: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $deep-purple-color;
+      text-decoration: none;
+
+      &:hover, &:active, &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}
