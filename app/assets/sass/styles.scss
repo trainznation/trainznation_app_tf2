@@ -1,6 +1,7 @@
 @import "~toastify-js/src/toastify.css";
 @import "modules/variables";
 @import "modules/global";
+@import "modules/badge";
 @import "modules/button";
 @import "modules/dropdown";
 @import "modules/loading";
@@ -9,6 +10,7 @@
 @import "modules/overlay";
 @import "modules/settings";
 @import "modules/shop";
+@import "modules/changelog";
 
 body, html, div {
   margin: 0;

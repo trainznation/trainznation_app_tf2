@@ -1,0 +1,35 @@
+.badge {
+  display: inline;
+  flex: 0 0 65px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 3px;
+  margin-right: 8px;
+  padding: 2px 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.badge-red {background-color: $red-color;}
+.badge-pink {background-color: $pink-color;}
+.badge-purple {background-color: $purple-color;}
+.badge-deep-purple {background-color: $deep-purple-color;}
+.badge-indigo {background-color: $indigo}
+.badge-blue {background-color: $blue}
+.badge-light-blue {background-color: $light-blue}
+.badge-cyan {background-color: $cyan}
+.badge-teal {background-color: $teal}
+.badge-green {background-color: $green}
+.badge-light-green {background-color: $light-green}
+.badge-lime {background-color: $lime}
+.badge-yellow {background-color: $yellow}
+.badge-amber {background-color: $amber}
+.badge-orange {background-color: $orange}
+.badge-deep-orange {background-color: $deep-orange}
+.badge-brown {background-color: $brown}
+.badge-grey {background-color: $grey}
+.badge-blue-grey {background-color: $blue-grey}
+
+.badge-added {background-color: $green}
+.badge-fix {background-color: $amber}
+.badge-delete {background-color: $red-color}

@@ -24,7 +24,8 @@ const VIEWS = {
     library: "#libraryContainer",
     download: "#downloadContainer",
     shop: "#shopContainer",
-    shop_info: "#shopInfoContainer"
+    shop_info: "#shopInfoContainer",
+    changelog: "#changelogContainer"
 };
 
 let currentView;
