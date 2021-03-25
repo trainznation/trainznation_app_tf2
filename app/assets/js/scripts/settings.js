@@ -151,59 +151,9 @@ function prepareConfigurationTab() {
     populateFormUpdateFromData()
 }
 
-const settingsTabChangelog = document.getElementById('changelog')
-const settingsChangelogTitle = settingsTabChangelog.getElementsByClassName('settingChangelogTitle')[0]
-const settingsChangelogText = settingsTabChangelog.getElementsByClassName('settingChangelogText')[0]
-const settingsChangelogButton = settingsTabChangelog.getElementsByClassName('settingChangelogButton')[0]
-
-document.getElementById('settingChangelogDevToolsButton').onclick = (e) => {
-    let window = remote.getCurrentWindow()
-    window.toggleDevTools()
-}
-
-function populateVersionInformation(version, valueElement, titleElement, checkElement) {
-    valueElement.innerHTML = 'v'+version
-    titleElement.innerHTML = 'Stable Release'
-}
-
-function populateChangelogVersionInformation() {
-    populateVersionInformation(remote.app.getVersion(), document.getElementById('currentVersionDetailValue'), document.getElementsByClassName('currentVersionDetailTitle'), document.getElementsByClassName('settingChangelogCurrentVersionCheck'))
-}
-
-function populateReleaseNote() {
-    $.ajax({
-        url: 'https://github.com/trainznation/trainznation_app_tf2/releases.atom',
-        success: (data) => {
-            const version = `v${remote.app.getVersion()}`
-            const entries = $(data).find('entry')
-
-            for(let i=0; i < entries.length; i++) {
-                const entry = $(entries[i])
-                let id = entry.find('id').text()
-                id = id.substring(id.lastIndexOf('/')+1)
-
-                if(id === version) {
-                    settingsChangelogTitle.innerHTML = entry.find('title').text()
-                    settingsChangelogText.innerHTML = entry.find('content').text()
-                    settingsChangelogButton.href = entry.find('link').attr('href')
-                }
-            }
-        },
-        timeout: 2500
-    }).catch(err => {
-        settingsChangelogText.innerHTML = "Impossible de charger la note de mise à jour"
-    })
-}
-
-function prepareChangelogTab() {
-    populateChangelogVersionInformation()
-    populateReleaseNote()
-}
-
 function prepareSettings() {
     setupSettingsTabs()
     prepareConfigurationTab()
-    prepareChangelogTab()
 }
 
 prepareSettings();
