@@ -1,0 +1,28 @@
+.row {
+  --gutter-x: 1.5rem;
+  --gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-top: calc(var(--gutter-y) * -1);
+  margin-right: calc(var(--gutter-x) / -2);
+  margin-left: calc(var(--gutter-x) / -2);
+
+  > * {
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--gutter-x)/ 2);
+    padding-left: calc(var(--gutter-x)/ 2);
+    margin-top: var(--gutter-y);
+  }
+}
+
+.col {
+  flex: 1 0 0;
+}
+
+.row-cols-1 > * {flex: 0 0 100%;}
+.row-cols-2 > * {flex: 0 0 50%; max-width: 50%}
+.row-cols-3 > * {flex: 0 0 33.33%; max-width: 33.33%}
+.row-cols-4 > * {flex: 0 0 25%; max-width: 25%}
+.row-cols-5 > * {flex: 0 0 20%; max-width: 20%}

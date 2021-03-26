@@ -1,0 +1,5 @@
+// Padding Utilities
+
+@for $i from 0 through 10 {
+  .p-#{$i} {padding: calc((0 + 0.25rem) * #{$i})}
+}
