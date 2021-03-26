@@ -1,7 +1,7 @@
 
 
 #topbar {
-  position: relative;
+  position: fixed;
   z-index: 100;
   display: flex;
   flex-direction: row;
@@ -9,6 +9,7 @@
   background: linear-gradient(180deg, rgba(30,41,60,1) 0%, rgba(32,36,44,1) 50%, rgba(32,34,35,1) 100%);
   transition: background-color 1s ease;
   -webkit-user-select: none;
+  width: 100%;
 
   #topMain {
     display: flex;
