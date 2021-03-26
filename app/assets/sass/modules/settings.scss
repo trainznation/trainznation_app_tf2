@@ -2,8 +2,11 @@
   position: relative;
   height: 100%;
   display: flex;
-  background-color: rgba(0, 0, 0, .5);
-  transition: background-color .25s cubic-bezier(.02, .01, .47, 1);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  margin: 0 auto;
+  padding: 90px 16px;
+  flex-direction: row;
 
   &:before {
     content: '';
@@ -24,6 +27,9 @@
     height: 100%;
     width: 25%;
     box-sizing: border-box;
+    position: sticky;
+    top: 90px;
+    flex: 1;
 
     > .settingNavContainer {
       height: 100%;
@@ -122,6 +128,7 @@
     height: 100%;
     width: 75%;
     box-sizing: border-box;
+    flex: 2;
 
     > .settingTab {
       width: 100%;

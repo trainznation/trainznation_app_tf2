@@ -776,7 +776,7 @@ img {
 }
 
 #topbar {
-  position: relative;
+  position: fixed;
   z-index: 100;
   display: flex;
   flex-direction: row;
@@ -784,6 +784,7 @@ img {
   background: linear-gradient(180deg, #1e293c 0%, #20242c 50%, #202223 100%);
   transition: background-color 1s ease;
   -webkit-user-select: none;
+  width: 100%;
 }
 #topbar #topMain {
   display: flex;
@@ -922,7 +923,7 @@ img {
 #landingContainer {
   position: relative;
   width: 100%;
-  padding: 0 16px;
+  padding: 80px 16px;
   margin: 0 auto;
 }
 #landingContainer > #landingContent {
@@ -1591,6 +1592,9 @@ img {
   display: flex;
   background-color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  margin: 0 auto;
+  padding: 90px 16px;
+  flex-direction: row;
 }
 #settingsContainer:before {
   content: "";
@@ -1609,6 +1613,9 @@ img {
   height: 100%;
   width: 25%;
   box-sizing: border-box;
+  position: sticky;
+  top: 90px;
+  flex: 1;
 }
 #settingsContainer > .settingContainerLeft > .settingNavContainer {
   height: 100%;
@@ -1692,6 +1699,7 @@ img {
   height: 100%;
   width: 75%;
   box-sizing: border-box;
+  flex: 2;
 }
 #settingsContainer > .settingContainerRight > .settingTab {
   width: 100%;
@@ -1811,8 +1819,8 @@ img {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 20px 16px;
-  margin: 35px auto;
+  padding: 90px 16px;
+  margin: 0 auto;
 }
 #shopContainer > .shop_menu_container {
   width: 98%;
@@ -1927,6 +1935,8 @@ img {
   min-height: 100%;
   height: auto;
   position: relative;
+  margin: 0 auto;
+  padding: 89px 16px;
 }
 #shopInfoContainer > #modalNewsModOverlay {
   position: fixed;
@@ -2927,6 +2937,94 @@ img {
 #libraryContainer #libraryContent #welcomeView > .libraryGrid .libraryGridContent > .row > .col img:hover::after {
   transition: background-position 0.7s ease;
   background-position: 10px 0;
+}
+
+#changelogContainer {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 90px 16px;
+}
+#changelogContainer * {
+  box-sizing: border-box;
+}
+#changelogContainer > .titleContainer {
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  border-bottom: 1px #e1e4e8 solid;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+#changelogContainer > .titleContainer > .title {
+  font-size: 32px;
+  font-weight: 300;
+  color: white;
+}
+#changelogContainer .releaseNoteSection {
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  position: relative !important;
+}
+#changelogContainer .releaseNoteSection > .timeline-decorator {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center !important;
+  margin-left: 12px;
+}
+#changelogContainer .releaseNoteSection > .timeline-decorator:before {
+  content: "";
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  width: 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((65px / 2) + 16px);
+  z-index: -1;
+}
+#changelogContainer .releaseNoteSection > .timeline-decorator > .version-badge {
+  width: 65px;
+  text-align: center;
+  display: inline-block !important;
+  font-weight: 600 !important;
+  padding: 4px !important;
+  margin-right: 8px !important;
+  border-radius: 10px;
+}
+#changelogContainer .releaseNoteSection > .timeline-decorator > .version-date {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+  max-width: 100% !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+}
+#changelogContainer .releaseNoteSection > .changelog {
+  margin-left: 74px !important;
+  list-style: none;
+}
+#changelogContainer .releaseNoteSection > .changelog li {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: flex-start;
+}
+#changelogContainer .releaseNoteSection ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#changelogContainer .releaseNoteSection a {
+  color: #673AB7;
+  text-decoration: none;
+}
+#changelogContainer .releaseNoteSection a:hover, #changelogContainer .releaseNoteSection a:active, #changelogContainer .releaseNoteSection a:focus {
+  text-decoration: underline;
 }
 
 body, html, div {
