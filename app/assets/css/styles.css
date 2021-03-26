@@ -80,6 +80,88 @@
     }
 }
 
+.p-0 {
+  padding: calc((0 + 0.25rem) * 0);
+}
+
+.p-1 {
+  padding: calc((0 + 0.25rem) * 1);
+}
+
+.p-2 {
+  padding: calc((0 + 0.25rem) * 2);
+}
+
+.p-3 {
+  padding: calc((0 + 0.25rem) * 3);
+}
+
+.p-4 {
+  padding: calc((0 + 0.25rem) * 4);
+}
+
+.p-5 {
+  padding: calc((0 + 0.25rem) * 5);
+}
+
+.p-6 {
+  padding: calc((0 + 0.25rem) * 6);
+}
+
+.p-7 {
+  padding: calc((0 + 0.25rem) * 7);
+}
+
+.p-8 {
+  padding: calc((0 + 0.25rem) * 8);
+}
+
+.p-9 {
+  padding: calc((0 + 0.25rem) * 9);
+}
+
+.p-10 {
+  padding: calc((0 + 0.25rem) * 10);
+}
+
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #160f32;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6046c7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
 .loader,
 .loader:before,
 .loader:after {
@@ -547,48 +629,31 @@
     max-width: 720px;
   }
 }
-.p-0 {
-  padding: calc((0 + 0.25rem) * 0);
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.navbar > .container-fluid {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.p-1 {
-  padding: calc((0 + 0.25rem) * 1);
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 }
-
-.p-2 {
-  padding: calc((0 + 0.25rem) * 2);
-}
-
-.p-3 {
-  padding: calc((0 + 0.25rem) * 3);
-}
-
-.p-4 {
-  padding: calc((0 + 0.25rem) * 4);
-}
-
-.p-5 {
-  padding: calc((0 + 0.25rem) * 5);
-}
-
-.p-6 {
-  padding: calc((0 + 0.25rem) * 6);
-}
-
-.p-7 {
-  padding: calc((0 + 0.25rem) * 7);
-}
-
-.p-8 {
-  padding: calc((0 + 0.25rem) * 8);
-}
-
-.p-9 {
-  padding: calc((0 + 0.25rem) * 9);
-}
-
-.p-10 {
-  padding: calc((0 + 0.25rem) * 10);
+.navbar-nav > li > .nav-link {
+  color: rgba(0, 0, 0, 0.55);
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -624,155 +689,155 @@ img {
 }
 
 .bg-red {
-  background-color: #f44336;
+  background-color: #f44336 !important;
 }
 
 .bg-pink {
-  background-color: #E91E63;
+  background-color: #E91E63 !important;
 }
 
 .bg-purple {
-  background-color: #9C27B0;
+  background-color: #9C27B0 !important;
 }
 
 .bg-deep-purple {
-  background-color: #673AB7;
+  background-color: #673AB7 !important;
 }
 
 .bg-indigo {
-  background-color: #3F51B5;
+  background-color: #3F51B5 !important;
 }
 
 .bg-blue {
-  background-color: #2196F3;
+  background-color: #2196F3 !important;
 }
 
 .bg-light-blue {
-  background-color: #03A9F4;
+  background-color: #03A9F4 !important;
 }
 
 .bg-cyan {
-  background-color: #00BCD4;
+  background-color: #00BCD4 !important;
 }
 
 .bg-teal {
-  background-color: #009688;
+  background-color: #009688 !important;
 }
 
 .bg-green {
-  background-color: #4CAF50;
+  background-color: #4CAF50 !important;
 }
 
 .bg-light-green {
-  background-color: #8BC34A;
+  background-color: #8BC34A !important;
 }
 
 .bg-lime {
-  background-color: #CDDC39;
+  background-color: #CDDC39 !important;
 }
 
 .bg-yellow {
-  background-color: #FFEB3B;
+  background-color: #FFEB3B !important;
 }
 
 .bg-amber {
-  background-color: #FFC107;
+  background-color: #FFC107 !important;
 }
 
 .bg-orange {
-  background-color: #FF9800;
+  background-color: #FF9800 !important;
 }
 
 .bg-deep-orange {
-  background-color: #FF5722;
+  background-color: #FF5722 !important;
 }
 
 .bg-brown {
-  background-color: #795548;
+  background-color: #795548 !important;
 }
 
 .bg-grey {
-  background-color: #9E9E9E;
+  background-color: #9E9E9E !important;
 }
 
 .bg-blue-grey {
-  background-color: #607D8B;
+  background-color: #607D8B !important;
 }
 
 .text-red {
-  color: #f44336;
+  color: #f44336 !important;
 }
 
 .text-pink {
-  color: #E91E63;
+  color: #E91E63 !important;
 }
 
 .text-purple {
-  color: #9C27B0;
+  color: #9C27B0 !important;
 }
 
 .text-deep-purple {
-  color: #673AB7;
+  color: #673AB7 !important;
 }
 
 .text-indigo {
-  color: #3F51B5;
+  color: #3F51B5 !important;
 }
 
 .text-blue {
-  color: #2196F3;
+  color: #2196F3 !important;
 }
 
 .text-light-blue {
-  color: #03A9F4;
+  color: #03A9F4 !important;
 }
 
 .text-cyan {
-  color: #00BCD4;
+  color: #00BCD4 !important;
 }
 
 .text-teal {
-  color: #009688;
+  color: #009688 !important;
 }
 
 .text-green {
-  color: #4CAF50;
+  color: #4CAF50 !important;
 }
 
 .text-light-green {
-  color: #8BC34A;
+  color: #8BC34A !important;
 }
 
 .text-lime {
-  color: #CDDC39;
+  color: #CDDC39 !important;
 }
 
 .text-yellow {
-  color: #FFEB3B;
+  color: #FFEB3B !important;
 }
 
 .text-amber {
-  color: #FFC107;
+  color: #FFC107 !important;
 }
 
 .text-orange {
-  color: #FF9800;
+  color: #FF9800 !important;
 }
 
 .text-deep-orange {
-  color: #FF5722;
+  color: #FF5722 !important;
 }
 
 .text-brown {
-  color: #795548;
+  color: #795548 !important;
 }
 
 .text-grey {
-  color: #9E9E9E;
+  color: #9E9E9E !important;
 }
 
 .text-blue-grey {
-  color: #607D8B;
+  color: #607D8B !important;
 }
 
 #topbar {
@@ -2727,7 +2792,7 @@ img {
   width: 100%;
   height: 100%;
   font-family: "Bitstream Vera Sans", Arial, Helvetica, sans-serif;
-  padding: 80px 0;
+  padding: 80px 0 0 0;
 }
 #libraryContainer #sidebar {
   position: fixed;
@@ -2938,6 +3003,255 @@ img {
 #libraryContainer #libraryContent #welcomeView > .libraryGrid .libraryGridContent > .row > .col img:hover::after {
   transition: background-position 0.7s ease;
   background-position: 10px 0;
+}
+#libraryContainer #libraryContent #gameView {
+  position: relative;
+}
+#libraryContainer #libraryContent #gameView img {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#libraryContainer #libraryContent #gameView .gameLogo {
+  position: absolute;
+  width: 10%;
+  top: 235px;
+  left: 82px;
+}
+#libraryContainer #libraryContent #gameView .topbar {
+  position: sticky;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 16px;
+  box-shadow: -1px -8px 31px 2px rgba(0, 0, 0, 0.58);
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left {
+  padding-left: 20px;
+  display: flex;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > button {
+  width: 190px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 47px;
+  transition: background-color 0.5s ease;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > button > svg {
+  font-size: 32px;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > button > span {
+  font-size: 17px;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > .middleContent {
+  display: flex;
+  margin-left: 12px;
+  flex-direction: row;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > .middleContent > .infoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 35px;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > .middleContent > .infoContainer > svg {
+  padding-right: 10px;
+  font-size: 45px;
+  color: rgba(250, 250, 250, 0.4);
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > .middleContent > .infoContainer > .text-container > .title {
+  font-size: 18px;
+  font-weight: 500;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_left > .middleContent > .infoContainer > .text-container > .subtitle {
+  color: #949494;
+  font-size: 12px;
+  padding-top: 9px;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_right {
+  padding-right: 20px;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_right > button > svg {
+  font-size: 24px;
+  text-align: center;
+  vertical-align: middle;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_right > .btn-game-system {
+  border: none;
+  background-color: rgba(84, 90, 95, 0.21);
+  color: #999D9F;
+  transition: background-color 0.7s ease;
+}
+#libraryContainer #libraryContent #gameView .topbar > .topbar_right > .btn-game-system:hover, #libraryContainer #libraryContent #gameView .topbar > .topbar_right > .btn-game-system:focus, #libraryContainer #libraryContent #gameView .topbar > .topbar_right > .btn-game-system:active {
+  border: none;
+  outline: none;
+  background-color: rgba(84, 90, 95, 0.85);
+}
+#libraryContainer #libraryContent #gameView nav {
+  width: 95%;
+  margin: auto;
+  height: auto;
+  padding-bottom: 10px;
+}
+#libraryContainer #libraryContent #gameView nav > .navblock {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  background-color: rgba(86, 89, 95, 0.28);
+  padding: 10px;
+  border-radius: 5px;
+}
+#libraryContainer #libraryContent #gameView nav > .navblock > .nav-item {
+  padding-right: 60px;
+}
+#libraryContainer #libraryContent #gameView nav > .navblock > .nav-item > .navlink {
+  color: #b7b7b7;
+  font-size: 17px;
+  padding: 3px 16px;
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
+#libraryContainer #libraryContent #gameView nav > .navblock > .nav-item > .navlink:hover, #libraryContainer #libraryContent #gameView nav > .navblock > .nav-item > .navlink:active {
+  color: #e5e5e5;
+  background-color: rgba(180, 180, 180, 0.4);
+  border-radius: 3px;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer {
+  width: 98%;
+  height: auto;
+  margin-top: 16px;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item {
+  color: white;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card > img {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card > .card-body {
+  padding: 0;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card > .card-body > .card-header {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card > .card-body > .card-header > .title {
+  width: 94%;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card > .card-body > .card-header > .socialNav {
+  width: auto;
+  display: contents;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > .new_item > .card > .card-body > .card-body {
+  width: 75%;
+  font-size: 12px;
+  color: #9a9898;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > a {
+  transition: all 0.7s ease;
+}
+#libraryContainer #libraryContent #gameView #latestNewsModContainer > a:hover, #libraryContainer #libraryContent #gameView #latestNewsModContainer > a:active {
+  transform: scale(1.05);
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 90px 16px;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer * {
+  box-sizing: border-box;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer > .titleContainer {
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  border-bottom: 1px #e1e4e8 solid;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer > .titleContainer > .title {
+  font-size: 32px;
+  font-weight: 300;
+  color: white;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection {
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  position: relative !important;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection > .timeline-decorator {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center !important;
+  margin-left: 12px;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection > .timeline-decorator:before {
+  content: "";
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  width: 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((65px / 2) + 16px);
+  z-index: -1;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection > .timeline-decorator > .version-badge {
+  width: 65px;
+  text-align: center;
+  display: inline-block !important;
+  font-weight: 600 !important;
+  padding: 4px !important;
+  margin-right: 8px !important;
+  border-radius: 10px;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection > .timeline-decorator > .version-date {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+  max-width: 100% !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection > .changelog {
+  margin-left: 74px !important;
+  list-style: none;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection > .changelog li {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: flex-start;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection a {
+  color: #673AB7;
+  text-decoration: none;
+}
+#libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection a:hover, #libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection a:active, #libraryContainer #libraryContent #gameView #lastestChangeModContainer .releaseNoteSection a:focus {
+  text-decoration: underline;
 }
 
 #changelogContainer {
