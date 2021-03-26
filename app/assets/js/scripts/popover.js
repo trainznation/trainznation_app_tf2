@@ -1,119 +1,49 @@
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect()
-    const html = document.documentElement
+let triggerTooltip = document.querySelectorAll('[data-toggle="tooltip"]')
+let triggerPopover = document.querySelectorAll('[data-toggle="popover"]')
 
-    return rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || html.clientHeight) &&
-        rect.right <= (window.innerWidth || html.clientWidth)
+let templateTooltip = document.querySelector('#tooltipContainer')
+let templatePopover = document.querySelector('#popoverContainer')
+
+function onTippyScriptLoaded(tooltip) {
+    tippy(tooltip, {
+        placement: (tooltip.dataset.placement) ? tooltip.dataset.placement : 'left',
+        boundary: document.getElementById('page-wrapper'),
+        touch: false,
+        theme: 'bbf',
+        content: tooltip.dataset.title
+    });
 }
 
-export default class Popover {
-    constructor(trigger, {position = 'top', className = 'popover'}) {
-        this.trigger = trigger;
-        this.position = position;
-        this.className = className;
-        this.orderedPositions = ['top', 'right', 'bottom', 'left'];
+$(function ($) {
+    $.getScript('https://unpkg.com/popper.js@1', function() {
+        $.getScript('https://unpkg.com/tippy.js@4', () => {
+            triggerTooltip.forEach((tooltip) => {
+                onTippyScriptLoaded(tooltip)
+            })
+        });
+    });
+})
 
-        const popoverTemplate = document.querySelector(`[data-popover=${trigger.dataset.popoverTarget}]`);
-        this.popover = document.createElement('div')
-        this.popover.innerHTML = popoverTemplate.innerHTML;
+// Schema Tooltip
 
-        Object.assign(this.popover.style, {
-            position: 'fixed'
+triggerTooltip.forEach((tooltip) => {
+    tooltip.addEventListener('mouseover', (e) => {
+        e.preventDefault()
+
+        Popper.createPopper(tooltip, templateTooltip, {
+            placement: tooltip.dataset.placement ? tooltip.dataset.placement : 'top'
         });
 
-        this.popover.classList.add(className);
+        console.log("OVER")
+    })
 
-        this.handleWindowEvent = () => {
-            if(this.isVisible) {
-                this.show()
-            }
-        };
+    tooltip.addEventListener('click', (e) => {
+        e.preventDefault()
 
-        this.handleDocumentEvent = (evt) => {
-            if(this.isVisible && evt.target !== this.trigger && evt.target !== this.popover) {
-                this.popover.remove();
-            }
-        };
-    }
-
-    get isVisible() {
-        return document.body.contains(this.popover)
-    }
-
-    show() {
-        document.addEventListener('click', this.handleDocumentEvent)
-        document.addEventListener('mouseover', this.handleDocumentEvent)
-        document.addEventListener('scroll', this.handleWindowEvent)
-        document.addEventListener('resize', this.handleWindowEvent)
-        document.body.appendChild(this.popover);
-
-        const { top: triggerTop, left: triggerLeft } = this.trigger.getBoundingClientRect();
-        const { offsetHeight: triggerHeight, offsetWidth: triggerWidth } = this.trigger;
-        const { offsetHeight: popoverHeight, offsetWidth: popoverWidth } = this.popover;
-
-        const positionIndex = this.orderedPositions.indexOf(this.position);
-
-        const positions = {
-            top: {
-                name: 'top',
-                top: triggerTop - popoverHeight,
-                left: triggerLeft - ((popoverWidth - triggerWidth) / 2)
-            },
-            right: {
-                name: 'right',
-                top: triggerTop - ((popoverHeight - triggerHeight) / 2),
-                left: triggerLeft + triggerWidth
-            },
-            bottom: {
-                name: 'bottom',
-                top: triggerTop + triggerHeight,
-                left: triggerLeft - ((popoverWidth - triggerWidth) / 2)
-            },
-            left: {
-                name: 'left',
-                top: triggerTop - ((popoverHeight - triggerHeight) / 2),
-                left: triggerLeft - popoverWidth
-            }
-        };
-
-        const position = this.orderedPositions
-            .slice(positionIndex)
-            .concat(this.orderedPositions.slice(0, positionIndex))
-            .map(pos => positions[pos])
-            .find(pos => {
-                this.popover.style.top = `${pos.top}px`;
-                this.popover.style.left = `${pos.left}px`;
-                return isInViewport(this.popover);
-            });
-
-        this.orderedPositions.forEach(pos => {
-            this.popover.classList.remove(`${this.className}--${pos}`);
+        Popper.createPopper(tooltip, templateTooltip, {
+            placement: tooltip.dataset.placement ? tooltip.dataset.placement : 'top'
         });
 
-        if (position) {
-            this.popover.classList.add(`${this.className}--${position.name}`);
-        } else {
-            this.popover.style.top = positions.bottom.top;
-            this.popover.style.left = positions.bottom.left;
-            this.popover.classList.add(`${this.className}--bottom`);
-        }
-    }
-
-    destroy() {
-        this.popover.remove();
-
-        document.removeEventListener('click', this.handleDocumentEvent);
-        window.removeEventListener('scroll', this.handleWindowEvent);
-        window.removeEventListener('resize', this.handleWindowEvent);
-    }
-
-    toggle() {
-        if (this.isVisible) {
-            this.destroy();
-        } else {
-            this.show();
-        }
-    }
-}
+        console.log("Click")
+    })
+})

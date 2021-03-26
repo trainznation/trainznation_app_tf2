@@ -23,12 +23,15 @@
         <%- include('shop') %>
         <%- include('shop_info') %>
         <%- include('changelog') %>
-        <template data-popover="popoverContainer">
+        <template id="popoverContainer">
             <div class="popoverContent">
                 <div class="popoverHeader"></div>
                 <div class="popoverBody"></div>
                 <div class="popoverFooter"></div>
             </div>
+        </template>
+        <template id="tooltipContainer">
+            <div class="tooltipContainer">Lorem ipsum dolor sit amet.</div>
         </template>
     </div>
     <%- include('overlay') %>

@@ -10,6 +10,7 @@ const path = require('path');
 const moment = require('moment');
 const db = require('electron-db');
 const Toastify = require('toastify-js/src/toastify')
+const Popover = require(path.join(__dirname, '../', 'assets', 'js', 'scripts', 'popover.js'))
 const pjson = require(path.join(__dirname, '../../package.json'));
 let config = require(app.getPath('userData')+'/data/database/configuration.json');
 
