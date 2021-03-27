@@ -2869,6 +2869,25 @@ img {
 #libraryContainer #sidebar > .libraryContainer .libraryContent .modInstalled {
   color: #8aaaba;
 }
+#libraryContainer #sidebar > .libraryContainer .libraryContent .warningContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 50%;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+#libraryContainer #sidebar > .libraryContainer .libraryContent .warningContainer > svg {
+  font-size: 118px;
+  opacity: 0.2;
+  color: orange;
+}
+#libraryContainer #sidebar > .libraryContainer .libraryContent .warningContainer > .texting {
+  font-size: 20px;
+  opacity: 0.3;
+}
 #libraryContainer #libraryContent {
   width: 87%;
   height: auto;

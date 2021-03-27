@@ -12,6 +12,8 @@ const db = require('electron-db');
 const Toastify = require('toastify-js/src/toastify')
 const pjson = require(path.join(__dirname, '../../package.json'));
 let config = require(app.getPath('userData')+'/data/database/configuration.json');
+const pathUser = app.getPath('userData')+'/data'
+const pathDatabase = app.getPath('userData')+'/data/database'
 
 moment.locale('fr');
 

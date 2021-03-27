@@ -96,6 +96,28 @@
         .modInstalled {
           color: #8aaaba;
         }
+
+        .warningContainer {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          top: 50%;
+          width: 90%;
+          margin: 0 auto;
+          text-align: center;
+
+          > svg {
+            font-size: 118px;
+            opacity: 0.2;
+            color: orange;
+          }
+
+          > .texting {
+            font-size: 20px;
+            opacity: 0.3;
+          }
+        }
       }
     }
   }
