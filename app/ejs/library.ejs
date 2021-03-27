@@ -182,12 +182,12 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div id="lastestChangeModContainer">
+                <div id="lastestChangeModContainer" style="display: none">
                     <div class="titleContainer">
-                        <h1 class="title" data-toggle="tooltip" data-title="Test d'un tooltip">Notes de développement de l'application</h1>
+                        <h1 class="title">Notes de développement de l'application</h1>
                     </div>
 
-                    <div id="release-notes">
+                    <div id="release-notes-mod" data-mod-id="1">
                         <section class="releaseNoteSection">
                             <header class="timeline-decorator">
                                 <span class="version-badge bg-purple">0.0.1</span>
@@ -203,8 +203,21 @@
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div id="galleryMod">
+                    <div class="galleryModContainer">
+                        <div class="row row-cols-5">
+                            <div class="col"><img src="https://picsum.photos/1920/1080" alt="" class="img-gallery img-responsive"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+<div id="modal" class="modal-img">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
 </div>
 
 <script src="../assets/js/scripts/library.js"></script>
