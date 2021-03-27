@@ -1,4 +1,7 @@
 @import "variables";
+@import "utilities";
+@import "scrollbar";
+@import "badge";
 @import "loading";
 @import "button";
 @import "dropdown";
@@ -6,7 +9,9 @@
 @import "card";
 @import "grid";
 @import "container";
-@import "utilities";
+@import "nav";
+@import "carousel";
+@import "modal";
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
   margin-top: 0;
@@ -40,42 +45,42 @@ img {
   vertical-align: middle;
 }
 
-.bg-red {background-color: $red-color;}
-.bg-pink {background-color: $pink-color;}
-.bg-purple {background-color: $purple-color;}
-.bg-deep-purple {background-color: $deep-purple-color;}
-.bg-indigo {background-color: $indigo}
-.bg-blue {background-color: $blue}
-.bg-light-blue {background-color: $light-blue}
-.bg-cyan {background-color: $cyan}
-.bg-teal {background-color: $teal}
-.bg-green {background-color: $green}
-.bg-light-green {background-color: $light-green}
-.bg-lime {background-color: $lime}
-.bg-yellow {background-color: $yellow}
-.bg-amber {background-color: $amber}
-.bg-orange {background-color: $orange}
-.bg-deep-orange {background-color: $deep-orange}
-.bg-brown {background-color: $brown}
-.bg-grey {background-color: $grey}
-.bg-blue-grey {background-color: $blue-grey}
+.bg-red {background-color: $red-color !important;}
+.bg-pink {background-color: $pink-color !important;}
+.bg-purple {background-color: $purple-color !important;}
+.bg-deep-purple {background-color: $deep-purple-color !important;}
+.bg-indigo {background-color: $indigo !important;}
+.bg-blue {background-color: $blue !important;}
+.bg-light-blue {background-color: $light-blue !important;}
+.bg-cyan {background-color: $cyan !important;}
+.bg-teal {background-color: $teal !important;}
+.bg-green {background-color: $green !important;}
+.bg-light-green {background-color: $light-green !important;}
+.bg-lime {background-color: $lime !important;}
+.bg-yellow {background-color: $yellow !important;}
+.bg-amber {background-color: $amber !important;}
+.bg-orange {background-color: $orange !important;}
+.bg-deep-orange {background-color: $deep-orange !important;}
+.bg-brown {background-color: $brown !important;}
+.bg-grey {background-color: $grey !important;}
+.bg-blue-grey {background-color: $blue-grey !important;}
 
-.text-red {color: $red-color;}
-.text-pink {color: $pink-color;}
-.text-purple {color: $purple-color;}
-.text-deep-purple {color: $deep-purple-color;}
-.text-indigo {color: $indigo}
-.text-blue {color: $blue}
-.text-light-blue {color: $light-blue}
-.text-cyan {color: $cyan}
-.text-teal {color: $teal}
-.text-green {color: $green}
-.text-light-green {color: $light-green}
-.text-lime {color: $lime}
-.text-yellow {color: $yellow}
-.text-amber {color: $amber}
-.text-orange {color: $orange}
-.text-deep-orange {color: $deep-orange}
-.text-brown {color: $brown}
-.text-grey {color: $grey}
-.text-blue-grey {color: $blue-grey}
+.text-red {color: $red-color !important;}
+.text-pink {color: $pink-color !important;}
+.text-purple {color: $purple-color !important;}
+.text-deep-purple {color: $deep-purple-color !important;}
+.text-indigo {color: $indigo !important;}
+.text-blue {color: $blue !important;}
+.text-light-blue {color: $light-blue !important;}
+.text-cyan {color: $cyan !important;}
+.text-teal {color: $teal !important;}
+.text-green {color: $green !important;}
+.text-light-green {color: $light-green !important;}
+.text-lime {color: $lime !important;}
+.text-yellow {color: $yellow !important;}
+.text-amber {color: $amber !important;}
+.text-orange {color: $orange !important;}
+.text-deep-orange {color: $deep-orange !important;}
+.text-brown {color: $brown !important;}
+.text-grey {color: $grey !important;}
+.text-blue-grey {color: $blue-grey !important;}

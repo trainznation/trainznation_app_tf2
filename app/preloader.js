@@ -111,8 +111,20 @@ if(firstLaunch === true) {
     createDirectory().then(() => {
         fetchTrainzServer().then(() => {
             createConfigFile().then(() => {
-                insertConfigData().then(() => {
-                    log.info("Chargement Initial terminer !")
+                createLibraryFile().then(() => {
+                    insertConfigData().then(() => {
+                        log.info("Chargement Initial terminer !")
+                        app.relaunch()
+                        app.quit()
+                    }).catch(err => {
+                        log.error("Erreur: "+err)
+                        openNewGitHubIssue({
+                            user: "trainznation",
+                            repo: "trainznation_app_tf2",
+                            body: err
+                        })
+                        app.quit()
+                    })
                 }).catch(err => {
                     log.error("Erreur: "+err)
                     openNewGitHubIssue({
