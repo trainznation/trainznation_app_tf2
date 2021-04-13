@@ -1,40 +1,82 @@
 let searchInput = document.querySelector('#searchInput')
 let sidebarContainer = document.querySelector('.libraryContent')
 
-db.getAll('library', pathDatabase, (succ, data) => {
-    if(succ) {
-        sidebarContainer.innerHTML = ``
-        let mods = Array.from(data)
+db.count('library', pathDatabase, (succ, data) => {
+    if (succ) {
+        console.log(data)
+    } else {
+        console.log('An error has occured.')
+        console.log(data)
+    }
+})
 
-        if(mods.length === 0) {
-            sidebarContainer.innerHTML += `
+function reloadLibrary() {
+    db.getAll('library', pathDatabase, (succ, data) => {
+        if(succ) {
+            sidebarContainer.innerHTML = ``
+            let mods = Array.from(data)
+            if(mods.length === 0) {
+                sidebarContainer.innerHTML += `
             <div class="warningContainer"> 
                 <span class="iconify" data-inline="false" data-icon="ant-design:warning-outlined"></span>
                 <span class="texting">Aucun mod actuellement dans la bibliothèque</span>
             </div>
             `
-        } else {
-            mods.forEach((mod) => {
-                let installed = {
-                    'not_installed': {'class': ''},
-                    'installed': {'class': 'modInstalled'},
-                }
+            } else {
+                mods.forEach((mod) => {
+                    let installed = {
+                        'not_installed': {'class': ''},
+                        'installed': {'class': 'modInstalled'},
+                    }
 
-                sidebarContainer.innerHTML += `
-                <li class="${installed[mod.install.status].class}" data-mod-id="${mod.mod_id}">
+                    sidebarContainer.innerHTML += `
+                <li class="${installed[mod.install.installed].class}" data-mod-id="${mod.mod_id}">
                     <div class="icon">
                         <img src="${mod.images.icon_x_small}" alt="${mod.name}">
                     </div>
                     <div class="modTitle">${mod.name}</div>
                 </li>
                 `
-            })
+                })
+            }
+
         }
-        searchingModInList()
-    } else {
-        console.error(data)
-    }
-})
+        /*if(succ) {
+            sidebarContainer.innerHTML = ``
+            let mods = Array.from(data)
+
+            if(mods.length === 0) {
+                sidebarContainer.innerHTML += `
+                <div class="warningContainer">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:warning-outlined"></span>
+                    <span class="texting">Aucun mod actuellement dans la bibliothèque</span>
+                </div>
+                `
+            } else {
+                mods.forEach((mod) => {
+                    let installed = {
+                        'not_installed': {'class': ''},
+                        'installed': {'class': 'modInstalled'},
+                    }
+
+                    sidebarContainer.innerHTML += `
+                    <li class="${installed[mod.install.status].class}" data-mod-id="${mod.mod_id}">
+                        <div class="icon">
+                            <img src="${mod.images.icon_x_small}" alt="${mod.name}">
+                        </div>
+                        <div class="modTitle">${mod.name}</div>
+                    </li>
+                    `
+                })
+            }
+            searchingModInList()
+        } else {
+            console.error(succ, data)
+        }*/
+    })
+}
+
+reloadLibrary()
 
 function searchingModInList() {
     searchInput.addEventListener('keyup', (e) => {
