@@ -56,6 +56,15 @@ function onClickItemMod() {
                     document.querySelector('#downloadTitleText').innerHTML = `Télécharger ${data.name}`;
                     document.querySelector('#modDescriptionContent').innerHTML = data.description;
                     document.querySelector('.news_summary').innerHTML = ``;
+                    document.querySelector('#btn_addtolibrary').dataset.modId = data.id
+
+                    itemIsNotLibrary(document.querySelector('#btn_addtolibrary').dataset.modId, document.querySelector('#btn_addtolibrary'))
+
+                    document.querySelector('#btn_addtolibrary').addEventListener('click', (e) => {
+                        e.preventDefault()
+                        CheckoutItem(document.querySelector('#btn_addtolibrary').dataset.modId, document.querySelector('#btn_addtolibrary'))
+                        itemIsNotLibrary(document.querySelector('#btn_addtolibrary').dataset.modId, document.querySelector('#btn_addtolibrary'))
+                    })
 
                     let headers = {
                         "Content-Type": "application/json",
@@ -282,6 +291,69 @@ function onClickItemModNews() {
                     console.error(err)
                 })
         })
+    })
+}
+
+function CheckoutItem(itemId, btn) {
+    btn.classList.add('isDisabled')
+    fetch(config.configuration[0].endpoint+'/mod/mod/'+itemId)
+        .then(res => res.json())
+        .then(json => {
+            btn.classList.remove('isDisabled')
+            let data = json.DATA;
+            let obj = {
+                name: data.name,
+                mod_id: data.mod_id,
+                mod_server_id: data.id,
+                images: {
+                    banner_extra_small: "https://picsum.photos/169/96",
+                    banner_small: "https://picsum.photos/960/254",
+                    banner: "https://picsum.photos/1920/509",
+                    banner_large: "https://picsum.photos/3840/1018",
+                    wall_small: "https://picsum.photos/960/540",
+                    wall: "https://picsum.photos/1920/1080",
+                    wall_large: "https://picsum.photos/3840/2160",
+                    icon_x_small: "https://picsum.photos/512/512",
+                    icon_small: "https://picsum.photos/682/682",
+                    icon: "https://picsum.photos/1024/1024",
+                    icon_large: "https://picsum.photos/2048/2048"
+                },
+                file: data.download_file,
+                version: data.mod_version,
+                install: {
+                    installed: "not_installed",
+                    installed_version: null,
+                    installed_date: null
+                }
+            }
+            db.insertTableContent('library', pathDatabase, obj, (succ, msg) => {
+                if(succ) {
+                    Toastify({
+                        text: "Mod ajouter à la bibliothèque",
+                        backgroundColor: "#4caf51",
+                        position: 'right',
+                    }).showToast();
+                } else {
+                    Toastify({
+                        text: "Impossible d'effectuer l'ajout du mod à la bibliothèque",
+                        backgroundColor: "#af4c4c",
+                        position: 'right',
+                    }).showToast();
+                    console.error(msg)
+                }
+            })
+        })
+}
+
+function itemIsNotLibrary(itemId, btn) {
+    db.getRows('library', pathDatabase, {mod_server_id: itemId}, (succ, result) => {
+        if(succ) {
+            btn.classList.remove('btn-success')
+            btn.classList.add('btn-primary isDisabled')
+            btn.innerHTML = "Télécharger"
+        } else {
+            
+        }
     })
 }
 

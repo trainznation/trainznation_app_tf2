@@ -13,7 +13,7 @@ function InitChangelog() {
     if(is.development) {
         urlChangelog = 'https://download.trainznation.io/tf2/app/changelog_tf2_mod.json'
     } else {
-        urlChangelog = 'https://download.trainznation.io/tf2/app/changelog_tf2_mod.json'
+        urlChangelog = 'https://download.trainznation.tk/tf2/app/changelog_tf2_mod.json'
     }
 
     fetch(urlChangelog)
